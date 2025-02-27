@@ -11,9 +11,11 @@ and `PCSE <https://pcse.readthedocs.io/en/stable/>`_ for crop yield agriculture 
 It natively supports training a variety of Reinforcement Learning Agents and generating data
 for other RL problems including Offline RL, Off Policy Evaluation, and Transfer Learning. 
 
-To visit the associated paper website, click `here <https://wsolow.github.io/wofost-website>`_.
+To visit the associated paper website, click `here <https://intelligent-reliable-autonomous-systems.github.io/WOFOSTGym-Site/>`_.
 
 To view the associated paper, click this `link <https://arxiv.org/abs/2502.19308>`_.
+
+Email Will Solow (soloww@oregonstate.edu) with bug reports or feature requests.
 
 To cite this work, please cite the research paper as follows:
 

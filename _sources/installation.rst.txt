@@ -19,7 +19,7 @@ Python 3.10.9, although later versions may be compatible. Perform:
     conda create -n <env-name> python=3.10.9
     conda activate <env-name>
 
-Now, we can install the required dependencies for WOFOST-Gym using pip. Perform the following (in order).
+Now, we can install the required dependencies for WOFOSTGym using pip. Perform the following (in order).
 
 .. code-block:: console
 
@@ -27,7 +27,7 @@ Now, we can install the required dependencies for WOFOST-Gym using pip. Perform 
     pip install -e pcse_gym
     pip install -r requirements.txt
 
-Congratulations! WOFOST-Gym has been successfully installed. 
+Congratulations! WOFOSTGym has been successfully installed. 
 
 First Simulation
 ----------------
@@ -41,4 +41,4 @@ To run your first crop simulation using WOFOST-Gym, navigate to the base directo
 This initial run may take a few seconds. The weather cache is being generated in ``/pcse/.pcse``. Output should be generated in 
 the form of Matplotlib Plots. 
 
-After this test you are ready to use WOFOST-Gym to train and evaluate agents in agriculture based scenarios! 
+After this test you are ready to use WOFOSTGym to train and evaluate agents in agriculture based scenarios! 
