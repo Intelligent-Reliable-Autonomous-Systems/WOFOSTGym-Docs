@@ -1,0 +1,1459 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="prev" title="Simulation Dynamics" href="dynamics.html" />
+
+    <!-- Generated with Sphinx 7.1.2 and Furo 2024.08.06 -->
+        <title>PCSE Output - WOFOST-Gym 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=354aac6f" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=302659d7" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../index.html"><div class="brand">WOFOST-Gym 1.0.0 documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
+  
+  
+  <span class="sidebar-brand-text">WOFOST-Gym 1.0.0 documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Getting Started</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../config/config_agro.html">Configurating a Simulation</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Configurating a Simulation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../config/command_line.html">Command Line Arguments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../config/config_site.html">Creating a Site</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../config/config_crop.html">Creating a Crop</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../gen_data.html">Generating Data</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../rl_agents/train_agent.html">Training RL Agents</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Training RL Agents</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../rl_agents/create_agent.html">Creating a New RL Agent</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../viz_data.html">Visualizing Output</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../pcse_gym/pcse_gym.html">PCSE Gym</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of PCSE Gym</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../pcse_gym/env_creation.html">Environment Creation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pcse_gym/output.html">Environment Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pcse_gym/environments.html">Available Environments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pcse_gym/policies.html">Prespecified Policies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pcse_gym/rewards.html">Reward Wrappers</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="pcse.html">Python Crop Simulation Environment</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of Python Crop Simulation Environment</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="sites_and_crops.html">Sites and Crops</a></li>
+<li class="toctree-l2"><a class="reference internal" href="weather.html">Weather</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dynamics.html">Simulation Dynamics</a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">PCSE Output</a></li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="view-this-page">
+  <a class="muted-link" href="../_sources/pcse/output_vars.rst.txt" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div>
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="pcse-output">
+<span id="id1"></span><h1>PCSE Output<a class="headerlink" href="#pcse-output" title="Permalink to this heading">¶</a></h1>
+<p>The PCSE environment has a multitude of states and rates we group these by module. The majority of them
+can be found in <a class="reference external" href="https://pcse.readthedocs.io/en/stable/code.html#crop-simulation-processes-for-wofost">PCSE Outputs</a>. However,
+some states and rates have been added to support perennial crop growth. See the reference tables below.</p>
+<section id="wofost-states-and-rate">
+<h2>WOFOST States and Rate<a class="headerlink" href="#wofost-states-and-rate" title="Permalink to this heading">¶</a></h2>
+<div class="table-wrapper docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Unit</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>TAGP</p></td>
+<td><p>Total above-ground Production</p></td>
+<td><p>kg ha-1</p></td>
+</tr>
+<tr class="row-odd"><td><p>GASST</p></td>
+<td><p>Total gross assimilation</p></td>
+<td><p>kg CH2O ha-1</p></td>
+</tr>
+<tr class="row-even"><td><p>MREST</p></td>
+<td><p>Total gross maintenance respiration</p></td>
+<td><p>kg CH2O ha-1</p></td>
+</tr>
+<tr class="row-odd"><td><p>CTRAT</p></td>
+<td><p>Total crop transpiration accumulated over the
+crop cycle</p></td>
+<td><p>cm</p></td>
+</tr>
+<tr class="row-even"><td><p>CEVST</p></td>
+<td><p>Total soil evaporation accumulated over the
+crop cycle</p></td>
+<td><p>cm</p></td>
+</tr>
+<tr class="row-odd"><td><p>HI</p></td>
+<td><p>Harvest Index (only calculated during
+finalize())</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>DOF</p></td>
+<td><p>Date representing the day of finish of the crop
+simulation</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>FINISH_TYPE</p></td>
+<td><p>String representing the reason for finishing the
+simulation: maturity, harvest, leave death, etc.</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>GASS</p></td>
+<td><p>Assimilation rate corrected for water stress</p></td>
+<td><p>kg CH2O ha-1 d-1</p></td>
+</tr>
+<tr class="row-odd"><td><p>PGASS</p></td>
+<td><p>Potential assimilation rate</p></td>
+<td><p>kg CH2O ha-1 d-1</p></td>
+</tr>
+<tr class="row-even"><td><p>MRES</p></td>
+<td><p>Actual maintenance respiration rate, taking into
+account that MRES &lt;= GASS.</p></td>
+<td><p>kg CH2O ha-1
+d-1</p></td>
+</tr>
+<tr class="row-odd"><td><p>PMRES</p></td>
+<td><p>Potential maintenance respiration rate</p></td>
+<td><p>kg CH2O ha-1 d-1</p></td>
+</tr>
+<tr class="row-even"><td><p>ASRC</p></td>
+<td><p>Net available assimilates (GASS - MRES)</p></td>
+<td><p>kg CH2O ha-1 d-1</p></td>
+</tr>
+<tr class="row-odd"><td><p>DMI</p></td>
+<td><p>Total dry matter increase, calculated as ASRC
+times a weighted conversion efficiency.</p></td>
+<td><p>kg ha-1 d-1</p></td>
+</tr>
+<tr class="row-even"><td><p>ADMI</p></td>
+<td><p>Aboveground dry matter increase</p></td>
+<td><p>kg ha-1 d-1</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="evaporation-states-and-rates">
+<h2>Evaporation States and Rates<a class="headerlink" href="#evaporation-states-and-rates" title="Permalink to this heading">¶</a></h2>
+<div class="table-wrapper docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Unit</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>IDWST</p></td>
+<td><p>Nr of days with water stress.</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>IDOST</p></td>
+<td><p>Nr of days with oxygen stress.</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>EVWMX</p></td>
+<td><p>Maximum evaporation rate from an open water surface.</p></td>
+<td><p>cm day-1</p></td>
+</tr>
+<tr class="row-odd"><td><p>EVSMX</p></td>
+<td><p>Maximum evaporation rate from a wet soil surface.</p></td>
+<td><p>cm day-1</p></td>
+</tr>
+<tr class="row-even"><td><p>TRAMX</p></td>
+<td><p>Maximum transpiration rate from the plant canopy.</p></td>
+<td><p>cm day-1</p></td>
+</tr>
+<tr class="row-odd"><td><p>TRA</p></td>
+<td><p>Actual transpiration rate from the plant canopy.</p></td>
+<td><p>cm day-1</p></td>
+</tr>
+<tr class="row-even"><td><p>IDOS</p></td>
+<td><p>Indicates water stress on this day (True|False).</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>IDWS</p></td>
+<td><p>Indicates oxygen stress on this day (True|False).</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>RFWS</p></td>
+<td><p>Reduction factor for water stress.</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>RFOS</p></td>
+<td><p>Reduction factor for oxygen stress.</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>RFTRA</p></td>
+<td><p>Reduction factor for transpiration (water &amp; oxygen).</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="leaf-dynamics-states-and-rates">
+<h2>Leaf Dynamics States and Rates<a class="headerlink" href="#leaf-dynamics-states-and-rates" title="Permalink to this heading">¶</a></h2>
+<div class="table-wrapper docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Unit</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>LV</p></td>
+<td><p>Leaf biomass per leaf class</p></td>
+<td><p>kg ha-1</p></td>
+</tr>
+<tr class="row-odd"><td><p>SLA</p></td>
+<td><p>Specific leaf area per leaf class</p></td>
+<td><p>ha kg-1</p></td>
+</tr>
+<tr class="row-even"><td><p>LVAGE</p></td>
+<td><p>Leaf age per leaf class</p></td>
+<td><p>d</p></td>
+</tr>
+<tr class="row-odd"><td><p>LVSUM</p></td>
+<td><p>Sum of LV</p></td>
+<td><p>kg ha-1</p></td>
+</tr>
+<tr class="row-even"><td><p>LAIEM</p></td>
+<td><p>LAI at emergence</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>LASUM</p></td>
+<td><p>Total leaf area as sum of LV*SLA, not including
+stem and pod area</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>LAIEXP</p></td>
+<td><p>LAI value under theoretical exponential growth</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>LAIMAX</p></td>
+<td><p>Maximum LAI reached during growth cycle</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>LAI</p></td>
+<td><p>Leaf area index, including stem and pod area</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>WLV</p></td>
+<td><p>Dry weight of living leaves</p></td>
+<td><p>kg ha-1</p></td>
+</tr>
+<tr class="row-even"><td><p>DWLV</p></td>
+<td><p>Dry weight of dead leaves</p></td>
+<td><p>kg ha-1</p></td>
+</tr>
+<tr class="row-odd"><td><p>TWLV</p></td>
+<td><p>Dry weight of total leaves (living + dead)</p></td>
+<td><p>kg ha-1</p></td>
+</tr>
+<tr class="row-even"><td><p>GRLV</p></td>
+<td><p>Growth rate leaves</p></td>
+<td><p>kg ha-1 d-1</p></td>
+</tr>
+<tr class="row-odd"><td><p>DSLV1</p></td>
+<td><p>Death rate leaves due to water stress</p></td>
+<td><p>kg ha-1 d-1</p></td>
+</tr>
+<tr class="row-even"><td><p>DSLV2</p></td>
+<td><p>Death rate leaves due to self-shading</p></td>
+<td><p>kg ha-1 d-1</p></td>
+</tr>
+<tr class="row-odd"><td><p>DSLV3</p></td>
+<td><p>Death rate leaves due to frost kill</p></td>
+<td><p>kg ha-1 d-1</p></td>
+</tr>
+<tr class="row-even"><td><p>DSLV4</p></td>
+<td><p>Death rate leaves due to nutrient stress</p></td>
+<td><p>kg ha-1 d-1</p></td>
+</tr>
+<tr class="row-odd"><td><p>DSLV</p></td>
+<td><p>Maximum of DSLV1, DSLV2, DSLV3</p></td>
+<td><p>kg ha-1 d-1</p></td>
+</tr>
+<tr class="row-even"><td><p>DALV</p></td>
+<td><p>Death rate leaves due to aging</p></td>
+<td><p>kg ha-1 d-1</p></td>
+</tr>
+<tr class="row-odd"><td><p>DRLV</p></td>
+<td><p>Death rate leaves as a combination of DSLV and
+DALV</p></td>
+<td><p>kg ha-1 d-1</p></td>
+</tr>
+<tr class="row-even"><td><p>SLAT</p></td>
+<td><p>Specific leaf area for current time step, adjusted
+for source/sink limited leaf expansion rate</p></td>
+<td><p>ha kg-1</p></td>
+</tr>
+<tr class="row-odd"><td><p>FYSAGE</p></td>
+<td><p>Increase in physiological leaf age</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>GLAIEX</p></td>
+<td><p>Sink-limited leaf expansion rate (exponential curve)</p></td>
+<td><p>ha ha-1 d-1</p></td>
+</tr>
+<tr class="row-odd"><td><p>GLASOL</p></td>
+<td><p>Source-limited leaf expansion rate (biomass
+increase)</p></td>
+<td><p>ha ha-1 d-1</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="npk-dynamics-states-and-rates">
+<h2>NPK Dynamics States and Rates<a class="headerlink" href="#npk-dynamics-states-and-rates" title="Permalink to this heading">¶</a></h2>
+<div class="table-wrapper docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Unit</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>NamountLV</p></td>
+<td><p>Actual N amount in living leaves</p></td>
+<td><p>kg N ha-1</p></td>
+</tr>
+<tr class="row-odd"><td><p>PamountLV</p></td>
+<td><p>Actual P amount in living leaves</p></td>
+<td><p>kg P ha-1</p></td>
+</tr>
+<tr class="row-even"><td><p>KamountLV</p></td>
+<td><p>Actual K amount in living leaves</p></td>
+<td><p>kg K ha-1</p></td>
+</tr>
+<tr class="row-odd"><td><p>NamountST</p></td>
+<td><p>Actual N amount in living stems</p></td>
+<td><p>kg N ha-1</p></td>
+</tr>
+<tr class="row-even"><td><p>PamountST</p></td>
+<td><p>Actual P amount in living stems</p></td>
+<td><p>kg P ha-1</p></td>
+</tr>
+<tr class="row-odd"><td><p>KamountST</p></td>
+<td><p>Actual K amount in living stems</p></td>
+<td><p>kg K ha-1</p></td>
+</tr>
+<tr class="row-even"><td><p>NamountSO</p></td>
+<td><p>Actual N amount in living storage organs</p></td>
+<td><p>kg N ha-1</p></td>
+</tr>
+<tr class="row-odd"><td><p>PamountSO</p></td>
+<td><p>Actual P amount in living storage organs</p></td>
+<td><p>kg P ha-1</p></td>
+</tr>
+<tr class="row-even"><td><p>KamountSO</p></td>
+<td><p>Actual K amount in living storage organs</p></td>
+<td><p>kg K ha-1</p></td>
+</tr>
+<tr class="row-odd"><td><p>NamountRT</p></td>
+<td><p>Actual N amount in living roots</p></td>
+<td><p>kg N ha-1</p></td>
+</tr>
+<tr class="row-even"><td><p>PamountRT</p></td>
+<td><p>Actual P amount in living roots</p></td>
+<td><p>kg P ha-1</p></td>
+</tr>
+<tr class="row-odd"><td><p>KamountRT</p></td>
+<td><p>Actual K amount in living roots</p></td>
+<td><p>kg K ha-1</p></td>
+</tr>
+<tr class="row-even"><td><p>Nuptake_T</p></td>
+<td><p>Total absorbed N amount</p></td>
+<td><p>kg N ha-1</p></td>
+</tr>
+<tr class="row-odd"><td><p>Puptake_T</p></td>
+<td><p>Total absorbed P amount</p></td>
+<td><p>kg P ha-1</p></td>
+</tr>
+<tr class="row-even"><td><p>Kuptake_T</p></td>
+<td><p>Total absorbed K amount</p></td>
+<td><p>kg K ha-1</p></td>
+</tr>
+<tr class="row-odd"><td><p>Nfix_T</p></td>
+<td><p>Total biological fixated N amount</p></td>
+<td><p>kg N ha-1</p></td>
+</tr>
+<tr class="row-even"><td><p>RNamountLV</p></td>
+<td><p>Weight increase (N) in leaves</p></td>
+<td><p>kg N ha-1 d-1</p></td>
+</tr>
+<tr class="row-odd"><td><p>RPamountLV</p></td>
+<td><p>Weight increase (P) in leaves</p></td>
+<td><p>kg P ha-1 d-1</p></td>
+</tr>
+<tr class="row-even"><td><p>RKamountLV</p></td>
+<td><p>Weight increase (K) in leaves</p></td>
+<td><p>kg K ha-1 d-1</p></td>
+</tr>
+<tr class="row-odd"><td><p>RNamountST</p></td>
+<td><p>Weight increase (N) in stems</p></td>
+<td><p>kg N ha-1 d-1</p></td>
+</tr>
+<tr class="row-even"><td><p>RPamountST</p></td>
+<td><p>Weight increase (P) in stems</p></td>
+<td><p>kg P ha-1 d-1</p></td>
+</tr>
+<tr class="row-odd"><td><p>RKamountST</p></td>
+<td><p>Weight increase (K) in stems</p></td>
+<td><p>kg K ha-1 d-1</p></td>
+</tr>
+<tr class="row-even"><td><p>RNamountRT</p></td>
+<td><p>Weight increase (N) in roots</p></td>
+<td><p>kg N ha-1 d-1</p></td>
+</tr>
+<tr class="row-odd"><td><p>RPamountRT</p></td>
+<td><p>Weight increase (P) in roots</p></td>
+<td><p>kg P ha-1 d-1</p></td>
+</tr>
+<tr class="row-even"><td><p>RKamountRT</p></td>
+<td><p>Weight increase (K) in roots</p></td>
+<td><p>kg K ha-1 d-1</p></td>
+</tr>
+<tr class="row-odd"><td><p>RNamountSO</p></td>
+<td><p>Weight increase (N) in storage organs</p></td>
+<td><p>kg N ha-1 d-1</p></td>
+</tr>
+<tr class="row-even"><td><p>RPamountSO</p></td>
+<td><p>Weight increase (P) in storage organs</p></td>
+<td><p>kg P ha-1 d-1</p></td>
+</tr>
+<tr class="row-odd"><td><p>RKamountSO</p></td>
+<td><p>Weight increase (K) in storage organs</p></td>
+<td><p>kg K ha-1 d-1</p></td>
+</tr>
+<tr class="row-even"><td><p>RNdeathLV</p></td>
+<td><p>Rate of N loss in leaves</p></td>
+<td><p>kg N ha-1 d-1</p></td>
+</tr>
+<tr class="row-odd"><td><p>RPdeathLV</p></td>
+<td><p>Rate of P loss in leaves</p></td>
+<td><p>kg P ha-1 d-1</p></td>
+</tr>
+<tr class="row-even"><td><p>RKdeathLV</p></td>
+<td><p>Rate of K loss in leaves</p></td>
+<td><p>kg K ha-1 d-1</p></td>
+</tr>
+<tr class="row-odd"><td><p>RNdeathST</p></td>
+<td><p>Rate of N loss in roots</p></td>
+<td><p>kg N ha-1 d-1</p></td>
+</tr>
+<tr class="row-even"><td><p>RPdeathST</p></td>
+<td><p>Rate of P loss in roots</p></td>
+<td><p>kg P ha-1 d-1</p></td>
+</tr>
+<tr class="row-odd"><td><p>RKdeathST</p></td>
+<td><p>Rate of K loss in roots</p></td>
+<td><p>kg K ha-1 d-1</p></td>
+</tr>
+<tr class="row-even"><td><p>RNdeathRT</p></td>
+<td><p>Rate of N loss in stems</p></td>
+<td><p>kg N ha-1 d-1</p></td>
+</tr>
+<tr class="row-odd"><td><p>RPdeathRT</p></td>
+<td><p>Rate of P loss in stems</p></td>
+<td><p>kg P ha-1 d-1</p></td>
+</tr>
+<tr class="row-even"><td><p>RKdeathRT</p></td>
+<td><p>Rate of K loss in stems</p></td>
+<td><p>kg K ha-1 d-1</p></td>
+</tr>
+<tr class="row-odd"><td><p>RNloss</p></td>
+<td><p>N loss due to senescence</p></td>
+<td><p>kg N ha-1 d-1</p></td>
+</tr>
+<tr class="row-even"><td><p>RPloss</p></td>
+<td><p>P loss due to senescence</p></td>
+<td><p>kg P ha-1 d-1</p></td>
+</tr>
+<tr class="row-odd"><td><p>RKloss</p></td>
+<td><p>K loss due to senescence</p></td>
+<td><p>kg K ha-1 d-1</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="partitioning-states-and-rates">
+<h2>Partitioning States and Rates<a class="headerlink" href="#partitioning-states-and-rates" title="Permalink to this heading">¶</a></h2>
+<div class="table-wrapper docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Pbl</p></th>
+<th class="head"><p>Unit</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>FR</p></td>
+<td><p>Fraction partitioned to roots.</p></td>
+<td><p>Y</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>FS</p></td>
+<td><p>Fraction partitioned to stems.</p></td>
+<td><p>Y</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>FL</p></td>
+<td><p>Fraction partitioned to leaves.</p></td>
+<td><p>Y</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>FO</p></td>
+<td><p>Fraction partitioned to storage organs.</p></td>
+<td><p>Y</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="vernalization-states-and-rates">
+<h2>Vernalization States and Rates<a class="headerlink" href="#vernalization-states-and-rates" title="Permalink to this heading">¶</a></h2>
+<div class="table-wrapper docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Pbl</p></th>
+<th class="head"><p>Unit</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>VERN</p></td>
+<td><p>Vernalisation state</p></td>
+<td><p>N</p></td>
+<td><p>days</p></td>
+</tr>
+<tr class="row-odd"><td><p>DOV</p></td>
+<td><p>Day when vernalisation requirements are
+fulfilled.</p></td>
+<td><p>N</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>ISVERNALISED</p></td>
+<td><p>Flag indicating that vernalisation requirement
+has been reached.</p></td>
+<td><p>Y</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>VERNR</p></td>
+<td><p>Rate of vernalisation</p></td>
+<td><p>N</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>VERNFAC</p></td>
+<td><p>Reduction factor on development rate due to
+vernalisation effect.</p></td>
+<td><p>Y</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="phenology-states-and-rates">
+<h2>Phenology States and Rates<a class="headerlink" href="#phenology-states-and-rates" title="Permalink to this heading">¶</a></h2>
+<div class="table-wrapper docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Pbl</p></th>
+<th class="head"><p>Unit</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>DVS</p></td>
+<td><p>Development stage</p></td>
+<td><p>Y</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>TSUM</p></td>
+<td><p>Temperature sum</p></td>
+<td><p>N</p></td>
+<td><p>C day</p></td>
+</tr>
+<tr class="row-even"><td><p>TSUME</p></td>
+<td><p>Temperature sum for emergence</p></td>
+<td><p>N</p></td>
+<td><p>C day</p></td>
+</tr>
+<tr class="row-odd"><td><p>DOS</p></td>
+<td><p>Day of sowing</p></td>
+<td><p>N</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>DOE</p></td>
+<td><p>Day of emergence</p></td>
+<td><p>N</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>DOA</p></td>
+<td><p>Day of Anthesis</p></td>
+<td><p>N</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>DOM</p></td>
+<td><p>Day of maturity</p></td>
+<td><p>N</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>DOH</p></td>
+<td><p>Day of harvest</p></td>
+<td><p>N</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>STAGE</p></td>
+<td><p>Current phenological stage, can take the following values
+emerging | vegetative | reproductive | mature</p></td>
+<td><p>N</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>DSNG</p></td>
+<td><p>Days since no crop growth (perennial only)</p></td>
+<td><p>Y</p></td>
+<td><p>day</p></td>
+</tr>
+<tr class="row-even"><td><p>DSD</p></td>
+<td><p>Days since dormancy started (perennial only)</p></td>
+<td><p>Y</p></td>
+<td><p>day</p></td>
+</tr>
+<tr class="row-odd"><td><p>AGE</p></td>
+<td><p>Age of the crop in years (perennial only)</p></td>
+<td><p>Y</p></td>
+<td><p>year</p></td>
+</tr>
+<tr class="row-even"><td><p>DOP</p></td>
+<td><p>Day of Planting</p></td>
+<td><p>Y</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>DATBE</p></td>
+<td><p>Number of consecutive days above temperature sum for
+emergence</p></td>
+<td><p>Y</p></td>
+<td><p>day</p></td>
+</tr>
+<tr class="row-even"><td><p>DTSUME</p></td>
+<td><p>Increase in temperature sum for emergence</p></td>
+<td><p>N</p></td>
+<td><p>C</p></td>
+</tr>
+<tr class="row-odd"><td><p>DTSUM</p></td>
+<td><p>Increase in temperature sum for anthesis or maturity</p></td>
+<td><p>N</p></td>
+<td><p>C</p></td>
+</tr>
+<tr class="row-even"><td><p>DVR</p></td>
+<td><p>Development rate</p></td>
+<td><p>Y</p></td>
+<td><p>day-1</p></td>
+</tr>
+<tr class="row-odd"><td><p>RDEM</p></td>
+<td><p>Day increase when day temp is above TSUMEM</p></td>
+<td><p>Y</p></td>
+<td><p>day</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="respiration-dynamics-states-and-rates">
+<h2>Respiration Dynamics States and Rates<a class="headerlink" href="#respiration-dynamics-states-and-rates" title="Permalink to this heading">¶</a></h2>
+<div class="table-wrapper docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Pbl</p></th>
+<th class="head"><p>Unit</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>PMRES</p></td>
+<td><p>Potential maintenance respiration rate</p></td>
+<td><p>N</p></td>
+<td><p>kg CH2O ha-1 d-1</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="root-dynamics-states-and-rates">
+<h2>Root Dynamics States and Rates<a class="headerlink" href="#root-dynamics-states-and-rates" title="Permalink to this heading">¶</a></h2>
+<div class="table-wrapper docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Pbl</p></th>
+<th class="head"><p>Unit</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>RD</p></td>
+<td><p>Current rooting depth</p></td>
+<td><p>Y</p></td>
+<td><p>cm</p></td>
+</tr>
+<tr class="row-odd"><td><p>RDM</p></td>
+<td><p>Maximum attainable rooting depth at the minimum of
+the soil and crop maximum rooting depth</p></td>
+<td><p>N</p></td>
+<td><p>cm</p></td>
+</tr>
+<tr class="row-even"><td><p>WRT</p></td>
+<td><p>Weight of living roots</p></td>
+<td><p>Y</p></td>
+<td><p>kg ha-1</p></td>
+</tr>
+<tr class="row-odd"><td><p>DWRT</p></td>
+<td><p>Weight of dead roots</p></td>
+<td><p>N</p></td>
+<td><p>kg ha-1</p></td>
+</tr>
+<tr class="row-even"><td><p>TWRT</p></td>
+<td><p>Total weight of roots</p></td>
+<td><p>Y</p></td>
+<td><p>kg ha-1</p></td>
+</tr>
+<tr class="row-odd"><td><p>RR</p></td>
+<td><p>Growth rate root depth</p></td>
+<td><p>N</p></td>
+<td><p>cm</p></td>
+</tr>
+<tr class="row-even"><td><p>GRRT</p></td>
+<td><p>Growth rate root biomass</p></td>
+<td><p>N</p></td>
+<td><p>kg ha-1 d-1</p></td>
+</tr>
+<tr class="row-odd"><td><p>DRRT1</p></td>
+<td><p>Death rate of roots due to aging</p></td>
+<td><p>N</p></td>
+<td><p>kg ha-1 d-1</p></td>
+</tr>
+<tr class="row-even"><td><p>DRRT2</p></td>
+<td><p>Death rate of roots due to excess water</p></td>
+<td><p>N</p></td>
+<td><p>kg ha-1 d-1</p></td>
+</tr>
+<tr class="row-odd"><td><p>DRRT3</p></td>
+<td><p>Death rate of roots due to excess NPK</p></td>
+<td><p>N</p></td>
+<td><p>kg ha-1 d-1</p></td>
+</tr>
+<tr class="row-even"><td><p>DRRT</p></td>
+<td><p>Death rate root biomass</p></td>
+<td><p>N</p></td>
+<td><p>kg ha-1 d-1</p></td>
+</tr>
+<tr class="row-odd"><td><p>GWRT</p></td>
+<td><p>Net change in root biomass</p></td>
+<td><p>N</p></td>
+<td><p>kg ha-1 d-1</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="stem-dynamics-states-and-rates">
+<h2>Stem Dynamics States and Rates<a class="headerlink" href="#stem-dynamics-states-and-rates" title="Permalink to this heading">¶</a></h2>
+<div class="table-wrapper docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Pbl</p></th>
+<th class="head"><p>Unit</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>SAI</p></td>
+<td><p>Stem Area Index</p></td>
+<td><p>Y</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>WST</p></td>
+<td><p>Weight of living stems</p></td>
+<td><p>Y</p></td>
+<td><p>kg ha-1</p></td>
+</tr>
+<tr class="row-even"><td><p>DWST</p></td>
+<td><p>Weight of dead stems</p></td>
+<td><p>N</p></td>
+<td><p>kg ha-1</p></td>
+</tr>
+<tr class="row-odd"><td><p>TWST</p></td>
+<td><p>Total weight of stems</p></td>
+<td><p>Y</p></td>
+<td><p>kg ha-1</p></td>
+</tr>
+<tr class="row-even"><td><p>GRST</p></td>
+<td><p>Growth rate stem biomass</p></td>
+<td><p>N</p></td>
+<td><p>kg ha-1 d-1</p></td>
+</tr>
+<tr class="row-odd"><td><p>DRST</p></td>
+<td><p>Death rate stem biomass</p></td>
+<td><p>N</p></td>
+<td><p>kg ha-1 d-1</p></td>
+</tr>
+<tr class="row-even"><td><p>GWST</p></td>
+<td><p>Net change in stem biomass</p></td>
+<td><p>N</p></td>
+<td><p>kg ha-1 d-1</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="storage-organs-dynamics-states-and-rates">
+<h2>Storage Organs Dynamics States and Rates<a class="headerlink" href="#storage-organs-dynamics-states-and-rates" title="Permalink to this heading">¶</a></h2>
+<div class="table-wrapper docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Pbl</p></th>
+<th class="head"><p>Unit</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>PAI</p></td>
+<td><p>Pod Area Index</p></td>
+<td><p>Y</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>WSO</p></td>
+<td><p>Weight of living storage organs</p></td>
+<td><p>Y</p></td>
+<td><p>kg ha-1</p></td>
+</tr>
+<tr class="row-even"><td><p>DWSO</p></td>
+<td><p>Weight of dead storage organs</p></td>
+<td><p>N</p></td>
+<td><p>kg ha-1</p></td>
+</tr>
+<tr class="row-odd"><td><p>TWSO</p></td>
+<td><p>Total weight of storage organs</p></td>
+<td><p>Y</p></td>
+<td><p>kg ha-1</p></td>
+</tr>
+<tr class="row-even"><td><p>HWSO</p></td>
+<td><p>Harvestable weight of storage organs</p></td>
+<td><p>Y</p></td>
+<td><p>kg ha-1</p></td>
+</tr>
+<tr class="row-odd"><td><p>LHW</p></td>
+<td><p>Last harvest weight of storage organs</p></td>
+<td><p>Y</p></td>
+<td><p>kg ha-1</p></td>
+</tr>
+<tr class="row-even"><td><p>GRSO</p></td>
+<td><p>Growth rate storage organs</p></td>
+<td><p>N</p></td>
+<td><p>kg ha-1 d-1</p></td>
+</tr>
+<tr class="row-odd"><td><p>DRSO</p></td>
+<td><p>Death rate storage organs</p></td>
+<td><p>N</p></td>
+<td><p>kg ha-1 d-1</p></td>
+</tr>
+<tr class="row-even"><td><p>DHSO</p></td>
+<td><p>Death rate of harvestable storage organs</p></td>
+<td><p>N</p></td>
+<td><p>kg ha-1 d-1</p></td>
+</tr>
+<tr class="row-odd"><td><p>GWSO</p></td>
+<td><p>Net change in storage organ biomass</p></td>
+<td><p>N</p></td>
+<td><p>kg ha-1 d-1</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="npk-demand-uptake-states-and-rates">
+<h2>NPK Demand Uptake States and Rates<a class="headerlink" href="#npk-demand-uptake-states-and-rates" title="Permalink to this heading">¶</a></h2>
+<p>+==============+=====================================================+=====+============================+
+| Name         | Description                                         | Pbl | Unit                       |
++==============+=====================================================+=====+============================+
+| NuptakeTotal | Total N uptake by the crop                          | N   | kg N ha-1                  |
++————–+—————————————————–+—–+—————————-+
+| PuptakeTotal | Total P uptake by the crop                          | N   | kg N ha-1                  |
++————–+—————————————————–+—–+—————————-+
+| KuptakeTotal | Total K uptake by the crop                          | N   | kg N ha-1                  |
++————–+—————————————————–+—–+—————————-+
+| NfixTotal    | Total N fixated by the crop                         | N   | kg N ha-1                  |
++————–+—————————————————–+—–+—————————-+
+| NdemandST    | N Demand in living stems                            | N   | kg N ha-1                  |
++————–+—————————————————–+—–+—————————-+
+| NdemandRT    | N Demand in living roots                            | N   | kg N ha-1                  |
++————–+—————————————————–+—–+—————————-+
+| NdemandSO    | N Demand in storage organs                          | N   | kg N ha-1                  |
++————–+—————————————————–+—–+—————————-+
+| PdemandLV    | P Demand in living leaves                           | N   | kg P ha-1                  |
++————–+—————————————————–+—–+—————————-+
+| PdemandST    | P Demand in living stems                            | N   | kg P ha-1                  |
++————–+—————————————————–+—–+—————————-+
+| PdemandRT    | P Demand in living roots                            | N   | kg P ha-1                  |
++————–+—————————————————–+—–+—————————-+
+| PdemandSO    | P Demand in storage organs                          | N   | kg P ha-1                  |
++————–+—————————————————–+—–+—————————-+
+| KdemandLV    | K Demand in living leaves                           | N   | kg K ha-1                  |
++————–+—————————————————–+—–+—————————-+
+| KdemandST    | K Demand in living stems                            | N   | kg K ha-1                  |
++————–+—————————————————–+—–+—————————-+
+| KdemandRT    | K Demand in living roots                            | N   | kg K ha-1                  |
++————–+—————————————————–+—–+—————————-+
+| KdemandSO    | K Demand in storage organs                          | N   | kg K ha-1                  |
++————–+—————————————————–+—–+—————————-+
+| RNuptakeLV   | Rate of N uptake in leaves                          | Y   | kg N ha-1 d-1              |
++————–+—————————————————–+—–+—————————-+
+| RNuptakeST   | Rate of N uptake in stems                           | Y   | kg N ha-1 d-1              |
++————–+—————————————————–+—–+—————————-+
+| RNuptakeRT   | Rate of N uptake in roots                           | Y   | kg N ha-1 d-1              |
++————–+—————————————————–+—–+—————————-+
+| RNuptakeSO   | Rate of N uptake in storage organs                  | Y   | kg N ha-1 d-1              |
++————–+—————————————————–+—–+—————————-+
+| RPuptakeLV   | Rate of P uptake in leaves                          | Y   | kg P ha-1 d-1              |
++————–+—————————————————–+—–+—————————-+
+| RPuptakeST   | Rate of P uptake in stems                           | Y   | kg P ha-1 d-1              |
++————–+—————————————————–+—–+—————————-+
+| RPuptakeRT   | Rate of P uptake in roots                           | Y   | kg P ha-1 d-1              |
++————–+—————————————————–+—–+—————————-+
+| RPuptakeSO   | Rate of P uptake in storage organs                  | Y   | kg P ha-1 d-1              |
++————–+—————————————————–+—–+—————————-+
+| RKuptakeLV   | Rate of K uptake in leaves                          | Y   | kg K ha-1 d-1              |
++————–+—————————————————–+—–+—————————-+
+| RKuptakeST   | Rate of K uptake in stems                           | Y   | kg K ha-1 d-1              |
++————–+—————————————————–+—–+—————————-+
+| RKuptakeRT   | Rate of K uptake in roots                           | Y   | kg K ha-1 d-1              |
++————–+—————————————————–+—–+—————————-+
+| RKuptakeSO   | Rate of K uptake in storage organs                  | Y   | kg K ha-1 d-1              |
++————–+—————————————————–+—–+—————————-+
+| RNuptake     | Total rate of N uptake                              | Y   | kg N ha-1 d-1              |
++————–+—————————————————–+—–+—————————-+
+| RPuptake     | Total rate of P uptake                              | Y   | kg P ha-1 d-1              |
++————–+—————————————————–+—–+—————————-+
+| RKuptake     | Total rate of K uptake                              | Y   | kg K ha-1 d-1              |
++————–+—————————————————–+—–+—————————-+
+| RNfixation   | Rate of N fixation                                  | Y   | kg N ha-1 d-1              |
++————–+—————————————————–+—–+—————————-+
+| NdemandLV    | N Demand in living leaves                           | N   | kg N ha-1                  |
++————–+—————————————————–+—–+—————————-+
+| NdemandST    | N Demand in living stems                            | N   | kg N ha-1                  |
++————–+—————————————————–+—–+—————————-+
+| NdemandRT    | N Demand in living roots                            | N   | kg N ha-1                  |
++————–+—————————————————–+—–+—————————-+
+| NdemandSO    | N Demand in storage organs                          | N   | kg N ha-1                  |
++————–+—————————————————–+—–+—————————-+
+| PdemandLV    | P Demand in living leaves                           | N   | kg P ha-1                  |
++————–+—————————————————–+—–+—————————-+
+| PdemandST    | P Demand in living stems                            | N   | kg P ha-1                  |
++————–+—————————————————–+—–+—————————-+
+| PdemandRT    | P Demand in living roots                            | N   | kg P ha-1                  |
++————–+—————————————————–+—–+—————————-+
+| PdemandSO    | P Demand in storage organs                          | N   | kg P ha-1                  |
++————–+—————————————————–+—–+—————————-+
+| KdemandLV    | K Demand in living leaves                           | N   | kg K ha-1                  |
++————–+—————————————————–+—–+—————————-+
+| KdemandST    | K Demand in living stems                            | N   | kg K ha-1                  |
++————–+—————————————————–+—–+—————————-+
+| KdemandRT    | K Demand in living roots                            | N   | kg K ha-1                  |
++————–+—————————————————–+—–+—————————-+
+| KdemandSO    | K Demand in storage organs                          | N   | kg K ha-1                  |
++————–+—————————————————–+—–+—————————-+
+| Ndemand      | Total crop N demand                                 | N   | kg N ha-1 d-1              |
++————–+—————————————————–+—–+—————————-+
+| Pdemand      | Total crop P demand                                 | N   | kg P ha-1 d-1              |
++————–+—————————————————–+—–+—————————-+
+| Kdemand      | Total crop K demand                                 | N   | kg K ha-1 d-1              |
++————–+—————————————————–+—–+—————————-+</p>
+</section>
+<section id="npk-stress-states-and-rates">
+<h2>NPK Stress States and Rates<a class="headerlink" href="#npk-stress-states-and-rates" title="Permalink to this heading">¶</a></h2>
+<p>+==============+=====================================================+=====+============================+
+| Name         | Description                                         | Pbl | Unit                       |
++==============+=====================================================+=====+============================+
+| NNI          | Nitrogen nutrition index                            | Y   | -                          |
++————–+—————————————————–+—–+—————————-+
+| PNI          | Phosphorous nutrition index                         | N   | -                          |
++————–+—————————————————–+—–+—————————-+
+| KNI          | Potassium nutrition index                           | N   | -                          |
++————–+—————————————————–+—–+—————————-+
+| NPKI         | Minimum of NNI, PNI, KNI                            | Y   | -                          |
++————–+—————————————————–+—–+—————————-+
+| RFNPK        | Reduction factor for CO2 assimilation based on NPKI | N   | -                          |
+|              | and the parameter NLUE_NPK                          |     |                            |
++————–+—————————————————–+—–+—————————-+</p>
+</section>
+<section id="id2">
+<h2>NPK Dynamics States and Rates<a class="headerlink" href="#id2" title="Permalink to this heading">¶</a></h2>
+<p>+=======================+=====================================================+=====+============================+
+| Name                  | Description                                         | Pbl | Unit                       |
++=======================+=====================================================+=====+============================+
+| NtranslocatableLV     | Translocatable N amount in living leaves            | N   | kg N ha-1                  |
++———————–+—————————————————–+—–+—————————-+
+| PtranslocatableLV     | Translocatable P amount in living leaves            | N   |   kg P ha-1                |
++———————–+—————————————————–+—–+—————————-+
+| KtranslocatableLV     | Translocatable K amount in living leaves            | N   |  kg K ha-1                 |
++———————–+—————————————————–+—–+—————————-+
+| NtranslocatableST     | Translocatable N amount in living stems             | N   | kg N ha-1                  |
++———————–+—————————————————–+—–+—————————-+
+| PtranslocatableST     | Translocatable P amount in living stems             | N   |   kg P ha-1                |
++———————–+—————————————————–+—–+—————————-+
+| KtranslocatableST     | Translocatable K amount in living stems             | N   |   kg K ha-1                |
++———————–+—————————————————–+—–+—————————-+
+| NtranslocatableRT     | Translocatable N amount in living roots             | N   |   kg N ha-1                |
++———————–+—————————————————–+—–+—————————-+
+| PtranslocatableRT     | Translocatable P amount in living roots             | N   |   kg P ha-1                |
++———————–+—————————————————–+—–+—————————-+
+| KtranslocatableRT     | Translocatable K amount in living roots             | N   | kg K ha-1                  |
++———————–+—————————————————–+—–+—————————-+
+| Ntranslocatable       | Total N amount that can be translocated to storage  | Y   |   kg N ha-1                |
+|                       | organs                                              |     |                            |
++———————–+—————————————————–+—–+—————————-+
+| Ptranslocatable       | Total P amount that can be translocated to storage  | Y   | kg P ha-1                  |
+|                       | organs                                              |     |                            |
++———————–+—————————————————–+—–+—————————-+
+| Ktranslocatable       | Total K amount that can be translocated to storage  | Y   | kg K ha-1                  |
+|                       | organs                                              |     |                            |
++———————–+—————————————————–+—–+—————————-+
+| RNtranslocationLV     | Weight increase (N) in leaves                       | Y   | kg ha-1 d-1                |
++———————–+—————————————————–+—–+—————————-+
+| RPtranslocationLV     | Weight increase (P) in leaves                       | Y   | kg ha-1 d-1                |
++———————–+—————————————————–+—–+—————————-+
+| RKtranslocationLV     | Weight increase (K) in leaves                       | Y   | kg ha-1 d-1                |
++———————–+—————————————————–+—–+—————————-+
+| RNtranslocationST     | Weight increase (N) in stems                        | Y   | kg ha-1 d-1                |
++———————–+—————————————————–+—–+—————————-+
+| RPtranslocationST     | Weight increase (P) in stems                        | Y   | kg ha-1 d-1                |
++———————–+—————————————————–+—–+—————————-+
+| RKtranslocationST     | Weight increase (K) in stems                        | Y   | kg ha-1 d-1                |
++———————–+—————————————————–+—–+—————————-+
+| RNtranslocationRT     | Weight increase (N) in roots                        | Y   | kg ha-1 d-1                |
++———————–+—————————————————–+—–+—————————-+
+| RPtranslocationRT     | Weight increase (P) in roots                        | Y   | kg ha-1 d-1                |
++———————–+—————————————————–+—–+—————————-+
+| RKtranslocationRT     | Weight increase (K) in roots                        | Y   | kg ha-1 d-1                |
++———————–+—————————————————–+—–+—————————-+</p>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          
+          <a class="prev-page" href="dynamics.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Simulation Dynamics</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2024, Will Solow
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">PCSE Output</a><ul>
+<li><a class="reference internal" href="#wofost-states-and-rate">WOFOST States and Rate</a></li>
+<li><a class="reference internal" href="#evaporation-states-and-rates">Evaporation States and Rates</a></li>
+<li><a class="reference internal" href="#leaf-dynamics-states-and-rates">Leaf Dynamics States and Rates</a></li>
+<li><a class="reference internal" href="#npk-dynamics-states-and-rates">NPK Dynamics States and Rates</a></li>
+<li><a class="reference internal" href="#partitioning-states-and-rates">Partitioning States and Rates</a></li>
+<li><a class="reference internal" href="#vernalization-states-and-rates">Vernalization States and Rates</a></li>
+<li><a class="reference internal" href="#phenology-states-and-rates">Phenology States and Rates</a></li>
+<li><a class="reference internal" href="#respiration-dynamics-states-and-rates">Respiration Dynamics States and Rates</a></li>
+<li><a class="reference internal" href="#root-dynamics-states-and-rates">Root Dynamics States and Rates</a></li>
+<li><a class="reference internal" href="#stem-dynamics-states-and-rates">Stem Dynamics States and Rates</a></li>
+<li><a class="reference internal" href="#storage-organs-dynamics-states-and-rates">Storage Organs Dynamics States and Rates</a></li>
+<li><a class="reference internal" href="#npk-demand-uptake-states-and-rates">NPK Demand Uptake States and Rates</a></li>
+<li><a class="reference internal" href="#npk-stress-states-and-rates">NPK Stress States and Rates</a></li>
+<li><a class="reference internal" href="#id2">NPK Dynamics States and Rates</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=af2ce170"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../_static/scripts/furo.js?v=5fa4622c"></script>
+    </body>
+</html>
