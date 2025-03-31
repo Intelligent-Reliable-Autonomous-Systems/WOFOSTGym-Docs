@@ -57,7 +57,7 @@ The above block of code trains a PPO agent with ``gamma`` value of 0.85.
 
 .. note::
 
-    As with any top-level script in **WOFOST-Gym**, a configuration can be loaded via the ``--load-config-fpath <Path to file>`` argument.
+    As with any top-level script in **WOFOST-Gym**, a configuration can be loaded via the ``--config-fpath <Path to file>`` argument.
     For training agents, this can be used to load a previously saved hyperparameter configuration, and/or can be used to load a previously saved 
     environment. See :ref:`command_line` for more information. 
 
