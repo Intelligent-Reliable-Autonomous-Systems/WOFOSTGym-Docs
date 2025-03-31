@@ -12,11 +12,11 @@ pcse and pcse_gym are included.
   git clone git@github.com:Intelligent-Reliable-Autonomous-Systems/WOFOSTGym.git
 
 We recommend using `conda <https://conda.org/>`_ to manage the virtual environment. Code was written using
-Python 3.10.9, although later versions may be compatible. Perform:
+Python 3.12, although later versions may be compatible. Perform:
 
 .. code-block:: console
 
-    conda create -n <env-name> python=3.10.9
+    conda create -n <env-name> python=3.12
     conda activate <env-name>
 
 Now, we can install the required dependencies for WOFOSTGym using pip. Perform the following (in order).
