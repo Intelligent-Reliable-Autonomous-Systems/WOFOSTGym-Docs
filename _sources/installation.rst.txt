@@ -23,11 +23,17 @@ Now, we can install the required dependencies for WOFOSTGym using pip. Perform t
 
 .. code-block:: console
 
-    pip install -e pcse
-    pip install -e pcse_gym
-    pip install -r requirements.txt
+    pip install -e pcse -e pcse_gym
+    pip install tyro torch omegaconf wandb tensorboard
 
-Congratulations! WOFOSTGym has been successfully installed. 
+Congratulations! WOFOST-Gym has been successfully installed. 
+
+For Imitation Learning and IRL experiments, the following packages are also required: 
+
+.. code-block:: console
+
+    pip install -e imitation -e stable-baselines3
+    pip install tqdm huggingface_sb3
 
 First Simulation
 ----------------

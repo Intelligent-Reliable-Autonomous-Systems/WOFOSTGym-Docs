@@ -284,12 +284,16 @@ Python 3.12, although later versions may be compatible. Perform:</p>
 </pre></div>
 </div>
 <p>Now, we can install the required dependencies for WOFOSTGym using pip. Perform the following (in order).</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">pip install -e pcse</span>
-<span class="go">pip install -e pcse_gym</span>
-<span class="go">pip install -r requirements.txt</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">pip install -e pcse -e pcse_gym</span>
+<span class="go">pip install tyro torch omegaconf wandb tensorboard</span>
 </pre></div>
 </div>
-<p>Congratulations! WOFOSTGym has been successfully installed.</p>
+<p>Congratulations! WOFOST-Gym has been successfully installed.</p>
+<p>For Imitation Learning and IRL experiments, the following packages are also required:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">pip install -e imitation -e stable-baselines3</span>
+<span class="go">pip install tqdm huggingface_sb3</span>
+</pre></div>
+</div>
 </section>
 <section id="first-simulation">
 <h2>First Simulation<a class="headerlink" href="#first-simulation" title="Permalink to this heading">¶</a></h2>
