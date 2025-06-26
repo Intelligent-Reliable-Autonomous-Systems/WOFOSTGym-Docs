@@ -94,3 +94,12 @@ Likewise, we can change ``site`` and ``crop`` parameters. Suppose we want to cha
 
         --npk.wf.<PARAMETER>
 
+.. _config_flow_chart:
+
+Configuration Flow Chart
+------------------------
+
+.. image:: /_static/WOFOSTGym_Flow_Diagram.png
+   :alt: Flow diagram
+   :align: center
+   :width: 600px

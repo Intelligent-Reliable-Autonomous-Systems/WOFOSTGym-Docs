@@ -274,7 +274,7 @@
 <p>Generally, there are two types of data a user may want to generated: data from a prespecified policy and data from a trained RL Agent.
 See <a class="reference internal" href="#data-policies"><span class="std std-ref">Prespecified Policies</span></a> and <a class="reference internal" href="#data-rl"><span class="std std-ref">RL Agent Policies</span></a> for more information.</p>
 <p>Data is generated over a range of <code class="docutils literal notranslate"><span class="pre">years</span></code> and range of <code class="docutils literal notranslate"><span class="pre">latitudes</span></code> and longitudes. These ranges can be specified by command line arguments:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">python3 gen_data.py</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">python3 -m data_generation.gen_data</span>
 <span class="go">--lat-low 50</span>
 <span class="go">--lat-high 51</span>
 <span class="go">--lon-low 120</span>
@@ -287,7 +287,7 @@ See <a class="reference internal" href="#data-policies"><span class="std std-ref
 <code class="docutils literal notranslate"><span class="pre">(obs,</span> <span class="pre">action,</span> <span class="pre">reward,</span> <span class="pre">next_obs,</span> <span class="pre">done,</span> <span class="pre">info)</span></code> format which is compatible for Offline RL training and loading into Replay Buffers. Meanwhile,
 <code class="docutils literal notranslate"><span class="pre">.csv</span></code> files save data in a daily observation format which can be useful for a variety of problems.</p>
 <p>To specify a file type, include the argument:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">python3 gen_data.py</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">python3 -m data_generation.gen_data</span>
 <span class="go">--file-type csv</span>
 <span class="go">OR</span>
 <span class="go">--file-type npz</span>
@@ -312,7 +312,7 @@ See <a class="reference internal" href="#data-policies"><span class="std std-ref
 <p>One of the goals of the <strong>WOFOST-Gym</strong> benchmark is to support Off Policy Evaluation, and in many cases the baseline we are competing against is an open-loop policy, or a relatively simple closed-looop policy
 such as <cite>Apply 15 kg/ha of Nitrogen Fertilizer if the Nitrogen level in the soil drops below X amount</cite>.</p>
 <p>To generate data from a prespecified policy, run the following:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">python3 gen_data.py --file-type npz --save-folder test --data-file test_data --policy-name Below_N</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">python3 -m data_generation.gen_data --file-type npz --save-folder test --data-file test_data --policy-name Below_N</span>
 </pre></div>
 </div>
 <p>This code block will generate data in <code class="docutils literal notranslate"><span class="pre">.npz</span></code> format, saving it to folder <code class="docutils literal notranslate"><span class="pre">test</span></code> under the name <code class="docutils literal notranslate"><span class="pre">test_data.npz</span></code>. The generated data will be from the
@@ -325,7 +325,7 @@ of water, Nitrogen, Phosphorous, or Potassium. For more information on Prespecif
 <span id="data-rl"></span><h2>RL Agent Policies<a class="headerlink" href="#rl-agent-policies" title="Permalink to this heading">¶</a></h2>
 <p>For some use cases, we may want to use data generated from a trained RL agent to see how it performs in a variety of scenarios.</p>
 <p>To generate data from a trained RL Agent, run the following:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">python3 gen_data.py --file-type npz --save-folder test --data-file test_data --agent-type &lt;Agent Type&gt; --agent_path &lt;Path to agent.pt File&gt;</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">python3 -m data_generation.gen_data --file-type npz --save-folder test --data-file test_data --agent-type &lt;Agent Type&gt; --agent_path &lt;Path to agent.pt File&gt;</span>
 </pre></div>
 </div>
 <p>This code block will generate data in <code class="docutils literal notranslate"><span class="pre">.npz</span></code> format, saving it to folder <code class="docutils literal notranslate"><span class="pre">test</span></code> under the name <code class="docutils literal notranslate"><span class="pre">test_data.npz</span></code>. The generated data will be from the
@@ -365,7 +365,7 @@ is the relative path to the agent. The pre-specified policies require parameters
 </pre></div>
 </div>
 <p>To run the script, type:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">python3 gen_data_multiple.py --save-folder test/multiple/ --data-file multiple</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">python3 -m data_generation.gen_data_multiple --save-folder test/multiple/ --data-file multiple</span>
 </pre></div>
 </div>
 <p>The output will be a <code class="docutils literal notranslate"><span class="pre">.npz</span></code> file with arrays of shape <code class="docutils literal notranslate"><span class="pre">(num_farms,</span> <span class="pre">num_policies,</span> <span class="pre">..)</span></code> which can then be used for algorithm training or evaluation, or data visualization.</p>

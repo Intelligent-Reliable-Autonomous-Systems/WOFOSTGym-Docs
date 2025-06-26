@@ -11,7 +11,7 @@ To run from ``vis_data``, type this:
 
 .. code-block:: console
 
-    python3 vis_data.py --data-file <data_file> --plt <plotting function name>
+    python3 -m data_plotting.vis_data --data-file <data_file> --plt <plotting function name>
 
 The ``data_file`` is the relative path to the ``.npz`` data file to load. ``--plt`` is the name of the plotting function
 in ``vis_data.py``. 
