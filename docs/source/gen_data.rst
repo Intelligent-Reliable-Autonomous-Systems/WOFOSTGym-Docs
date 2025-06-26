@@ -12,7 +12,7 @@ Data is generated over a range of ``years`` and range of ``latitudes`` and longi
 
 .. code-block:: console
 
-    python3 gen_data.py 
+    python3 -m data_generation.gen_data
     --lat-low 50
     --lat-high 51
     --lon-low 120
@@ -28,7 +28,7 @@ To specify a file type, include the argument:
 
 .. code-block:: console
 
-    python3 gen_data.py 
+    python3 -m data_generation.gen_data
     --file-type csv
     OR
     --file-type npz
@@ -59,7 +59,7 @@ To generate data from a prespecified policy, run the following:
 
 .. code-block:: console
 
-    python3 gen_data.py --file-type npz --save-folder test --data-file test_data --policy-name Below_N
+    python3 -m data_generation.gen_data --file-type npz --save-folder test --data-file test_data --policy-name Below_N
 
 This code block will generate data in ``.npz`` format, saving it to folder ``test`` under the name ``test_data.npz``. The generated data will be from the 
 ``Below_N`` policy located in ``pcse_gym/policies.py``. 
@@ -79,7 +79,7 @@ To generate data from a trained RL Agent, run the following:
 
 .. code-block:: console
 
-    python3 gen_data.py --file-type npz --save-folder test --data-file test_data --agent-type <Agent Type> --agent_path <Path to agent.pt File>
+    python3 -m data_generation.gen_data --file-type npz --save-folder test --data-file test_data --agent-type <Agent Type> --agent_path <Path to agent.pt File>
 
 This code block will generate data in ``.npz`` format, saving it to folder ``test`` under the name ``test_data.npz``. The generated data will be from the 
 specified ``agent.pt`` file. 
@@ -130,6 +130,6 @@ To run the script, type:
 
 .. code-block:: console
 
-     python3 gen_data_multiple.py --save-folder test/multiple/ --data-file multiple    
+     python3 -m data_generation.gen_data_multiple --save-folder test/multiple/ --data-file multiple    
 
 The output will be a ``.npz`` file with arrays of shape ``(num_farms, num_policies, ..)`` which can then be used for algorithm training or evaluation, or data visualization. 
