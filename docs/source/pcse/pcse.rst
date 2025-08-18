@@ -25,3 +25,4 @@ Follow along in the pages below which highlight the important changes that have 
    weather
    dynamics
    output_vars
+   new_process
