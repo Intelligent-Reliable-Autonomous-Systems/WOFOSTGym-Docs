@@ -1,15 +1,15 @@
-.. _site_config:
+.. _soil_config:
 
-Creating a Site
+Creating a Soil
 ===============
 
-Site Creation
+Soil Creation
 -------------
 
-Every site has a predefined set of parameters that need to be included that define the soil dynamics. See the table 
-below for information on these parameters. For the blank template to make a site, see :ref:`site_template`.
+Every soil has a predefined set of parameters that need to be included that define the soil dynamics. See the table 
+below for information on these parameters. For the blank template to make a soil, see :ref:`soil_template`.
 
-Site Parameters
+Soil Parameters
 ---------------
 
 NPK Soil Parameters
@@ -99,9 +99,9 @@ Soil Dynamics Parameters
 +----------------------+--------------------------------------------------------+--------+-----------------------------+
 
 
-.. _site_template:
+.. _soil_template:
 
-Site Template
+Soil Template
 ^^^^^^^^^^^^^
 
-Download the site template YAML file here: :download:`site_template.yaml </_static/site_template.yaml>`
+Download the soil template YAML file here: :download:`soil_template.yaml </_static/soil_template.yaml>`

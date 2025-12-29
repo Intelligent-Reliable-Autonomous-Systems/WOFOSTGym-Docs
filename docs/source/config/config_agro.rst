@@ -6,7 +6,7 @@ Configurating a Simulation
 Agromanagement
 --------------
 The agromanagent files in ``/env_config/agro`` controls the underlying crop simulation in ``/pcse/`` by
-loading different parameter sets for crops and sites. All Agromanagement files are written in YAML.
+loading different parameter sets for crops and soils. All Agromanagement files are written in YAML.
 An agromanagement file consists of three parts.
 
 File Heading
@@ -17,48 +17,56 @@ Every agromanagement file must start with the heading ``Agromanagement:``
 
     Agromanagement:
 
-.. _site_calendar: 
+.. _soil_calendar: 
 
-SiteCalendar
-^^^^^^^^^^^^
-After the Agromanagement Heading, there must be a valid ``SiteCalendar``, which looks like:
-
+Site
+^^^^
 .. code-block:: text
 
     AgroManagement:
-        SiteCalendar:
+        Site:
             latitude: 52
             longitude: 5
             year: 1984
-            site_name: oregon
-            site_variation: oregon_1
-            site_start_date: 1985-01-01
-            site_end_date: 1985-12-01
 
 ``latitude`` and ``longitude`` set the latitude and longitude of the site. Along with ``year``, ``latitude`` and ``longitude`` 
 are used to load the historical weather for that ``latitude``, ``longitude`` and ``year`` using the `NASA Power API <https://github.com/kdmayer/nasa-power-api>`_.
 
 * NOTE: the ``latitude``, ``longitude`` and ``year`` can be overridden in the ``env.reset()`` function or with the ``--npk-args.random-reset`` flag. 
 
-``site_name`` and ``site_variation`` read the parameters from the ``env_config/site/site_name.yaml`` given the ``site_variation``. 
 
-Check that the ``site_variation`` appears under the ``Variations`` header in the ``site_name.yaml`` file. See :ref:`site_config`
+SoilCalendar
+^^^^^^^^^^^^
+After the Agromanagement Heading, there must be a valid ``SoilCalendar``, which looks like:
 
-``site_start_date`` and ``site_end_date`` set the global starting and ending dates of the simulation. The specifc year is almost always unimportant, as it will simply correlate to the length of the simulation in years.
+.. code-block:: text
 
-* Example: setting ``site_start_date: 1985-01-01`` and ``site_end_date: 1985-12-01`` will result in the same output as setting  ``site_start_date: 2011-01-01`` and ``site_end_date: 2011-12-01``
+    AgroManagement:
+        SoilCalendar:
+            soil_name: oregon
+            soil_variation: oregon_1
+            soil_start_date: 1985-01-01
+            soil_end_date: 1985-12-01
 
-* This is because on calling ``env.reset()`` the ``year`` is passed with the start month and day, and the difference between the ``site_start_date`` and ``site_end_date``. While this feels a bit clunky, it makes validation very easy.
+``soil_name`` and ``soil_variation`` read the parameters from the ``env_config/soil/soil_name.yaml`` given the ``soil_variation``. 
+
+Check that the ``soil_variation`` appears under the ``Variations`` header in the ``soil_name.yaml`` file. See :ref:`soil_config`
+
+``soil_start_date`` and ``soil_end_date`` set the global starting and ending dates of the simulation. The specifc year is almost always unimportant, as it will simply correlate to the length of the simulation in years.
+
+* Example: setting ``soil_start_date: 1985-01-01`` and ``soil_end_date: 1985-12-01`` will result in the same output as setting  ``soil_start_date: 2011-01-01`` and ``soil_end_date: 2011-12-01``
+
+* This is because on calling ``env.reset()`` the ``year`` is passed with the start month and day, and the difference between the ``soil_start_date`` and ``soil_end_date``. While this feels a bit clunky, it makes validation very easy.
 
 .. caution::
 
-    When training a RL Agent, the ``site_start_date`` and ``site_end_date`` should correspond to the ``crop_start_date`` and ``crop_end_date``, otherwise there will be 
+    When training a RL Agent, the ``soil_start_date`` and ``soil_end_date`` should correspond to the ``crop_start_date`` and ``crop_end_date``, otherwise there will be 
     crop observation variables missing which the RL Agent cannot handle.
 
 
 CropCalendar
 ^^^^^^^^^^^^
-In addition to the ``SiteCalendar``, there must be a valid ``CropCalendar``, which looks like:
+In addition to the ``SoilCalendar``, there must be a valid ``CropCalendar``, which looks like:
 
 .. code-block:: text
 
@@ -75,8 +83,8 @@ In addition to the ``SiteCalendar``, there must be a valid ``CropCalendar``, whi
 
 Check that the ``crop_variety`` appears under the ``Varieties`` header in the ``crop_name.yaml`` file. See :ref:`crop_config`
    
-``crop_start_date`` and ``crop_end_date`` set the dates that the crop starts and the maximum length of the crop. The ``crop_start_date`` must come after the ``site_start_date`` as a 
-crop cannot be present without an active site, and the ``crop_end_date`` must happen before the ``site_end_date`` as there cannot be an active crop without an active site. 
+``crop_start_date`` and ``crop_end_date`` set the dates that the crop starts and the maximum length of the crop. The ``crop_start_date`` must come after the ``soil_start_date`` as a 
+crop cannot be present without an active soil, and the ``crop_end_date`` must happen before the ``soil_end_date`` as there cannot be an active crop without an active soil. 
 
 The ``crop_start_type`` dictates the crop stage that the crop starts in. 
 * For annual crops, valid start types are: ``sowing`` and ``emergence``.
@@ -87,9 +95,9 @@ The ``crop_end_type`` controls the stage or trigger that the end the crop portio
 * For annual and perrennial crops, valid end types are: ``sowing``, ``emergence``, ``maturity``, ``harvest``, ``death``, and ``max_duration``.
 * For grape specific simulations, valid end types are: ``endodorm``, ``ecodorm``, ``budbreak``, ``verasion``, ``ripe``, ``max_duration``.
 
-``max_duration`` controls the maximum duration in days that a crop can be active. Regardless of the ``crop_end_type``, if the maximum duration is reached, the crop will become inactive, although the site simulation may continue.
+``max_duration`` controls the maximum duration in days that a crop can be active. Regardless of the ``crop_end_type``, if the maximum duration is reached, the crop will become inactive, although the soil simulation may continue.
 
-* For more information on how crops and sites interact, see :ref:`sites_and_crops`
+* For more information on how crops and soils interact, see :ref:`soils_and_crops`
 
 Full Example
 ^^^^^^^^^^^^
@@ -98,14 +106,15 @@ After the three parts outlined above, a complete example would look like:
 .. code-block:: text
 
     AgroManagement:
-        SiteCalendar:
+        Site: 
             latitude: 52
             longitude: 5
             year: 1984
-            site_name: oregon
-            site_variation: oregon_1
-            site_start_date: 1985-01-01
-            site_end_date: 1985-12-01
+        SoilCalendar:
+            soil_name: oregon
+            soil_variation: oregon_1
+            soil_start_date: 1985-01-01
+            soil_end_date: 1985-12-01
         CropCalendar:
             crop_name: wheat
             crop_variety: wheat_1
@@ -123,14 +132,15 @@ Agromanagement Template
 .. code-block:: text
 
     AgroManagement:
-        SiteCalendar:
+        Site: 
             latitude: 
             longitude: 
             year: 
-            site_name: 
-            site_variation: 
-            site_start_date: 
-            site_end_date: 
+        SoilCalendar:
+            soil_name: 
+            soil_variation: 
+            soil_start_date: 
+            soil_end_date: 
         CropCalendar:
             crop_name: 
             crop_variety: 
@@ -145,7 +155,7 @@ Agromanagement Template
    :glob:
 
    command_line
-   config_site
+   config_soil
    config_crop
 
 
