@@ -203,7 +203,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../installation.html">Getting Started</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../config/config_agro.html">Configurating a Simulation</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Configurating a Simulation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../config/command_line.html">Command Line Arguments</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../config/config_site.html">Creating a Site</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../config/config_crop.html">Creating a Crop</a></li>
 </ul>
 </li>
@@ -222,7 +221,6 @@
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../pcse/pcse.html">Python Crop Simulation Environment</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of Python Crop Simulation Environment</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../pcse/sites_and_crops.html">Sites and Crops</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../pcse/weather.html">Weather</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../pcse/dynamics.html">Simulation Dynamics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../pcse/output_vars.html">PCSE Output</a></li>
@@ -278,7 +276,7 @@
 <p>The environment output is controlled by the <code class="docutils literal notranslate"><span class="pre">--npk.output-vars</span></code> and <code class="docutils literal notranslate"><span class="pre">--npk.weather-vars</span></code> parameters
 in the <code class="docutils literal notranslate"><span class="pre">pcse_gym.args.NPK_Args</span></code> dataclass. This dataclass is present in the <code class="docutils literal notranslate"><span class="pre">utils.Args</span></code> class which is passed
 to all scripts that generate data or train agents.</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">output</span></code> variables correspond to the site and crop variables output by the simulation at each time step. Meanwhile, the
+<p>The <code class="docutils literal notranslate"><span class="pre">output</span></code> variables correspond to the soil and crop variables output by the simulation at each time step. Meanwhile, the
 <code class="docutils literal notranslate"><span class="pre">weather</span></code> variables correspond to the daily weather from the specified location and year for the given day. A full list of
 output and weather variables can be found at <a class="reference internal" href="../pcse/output_vars.html#pcse-output"><span class="std std-ref">PCSE Output</span></a>.</p>
 <p>The default output and weather variables are specified as:</p>

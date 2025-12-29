@@ -21,7 +21,7 @@ Follow along in the pages below which highlight the important changes that have 
    :maxdepth: 2
    :glob:
    
-   sites_and_crops
+   soils_and_crops
    weather
    dynamics
    output_vars

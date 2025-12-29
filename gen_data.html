@@ -203,7 +203,6 @@
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Getting Started</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="config/config_agro.html">Configurating a Simulation</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Configurating a Simulation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="config/command_line.html">Command Line Arguments</a></li>
-<li class="toctree-l2"><a class="reference internal" href="config/config_site.html">Creating a Site</a></li>
 <li class="toctree-l2"><a class="reference internal" href="config/config_crop.html">Creating a Crop</a></li>
 </ul>
 </li>
@@ -222,7 +221,6 @@
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="pcse/pcse.html">Python Crop Simulation Environment</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of Python Crop Simulation Environment</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="pcse/sites_and_crops.html">Sites and Crops</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pcse/weather.html">Weather</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pcse/dynamics.html">Simulation Dynamics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pcse/output_vars.html">PCSE Output</a></li>
@@ -346,7 +344,7 @@ specified <code class="docutils literal notranslate"><span class="pre">agent.pt<
 how her policy performs when fertilizing wheat at another farm. This is the problem of Off Policy Evaluation.</p>
 <p>To generate data from multiple policies and farms, navigate to the <code class="docutils literal notranslate"><span class="pre">gen_data_multiple.py</span></code> file. For ease of use, each farm is specified by a <code class="docutils literal notranslate"><span class="pre">.yaml</span></code>
 configuration file which is created when an environment is called. See <a class="reference internal" href="pcse_gym/env_creation.html#env-creation"><span class="std std-ref">Environment Creation</span></a> for more information. Modify multiple <code class="docutils literal notranslate"><span class="pre">.yaml</span></code> configuration files
-to achieve the desired site and crop configuration. Loading configurations is as follows:</p>
+to achieve the desired soil and crop configuration. Loading configurations is as follows:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">config_fpaths</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;test/test1/config.yaml&quot;</span><span class="p">,</span> <span class="s2">&quot;test/test2/config.yaml&quot;</span><span class="p">]</span>
 <span class="n">envs</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">make_gym_envs</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">config_fpaths</span><span class="o">=</span><span class="n">config_fpaths</span><span class="p">)</span>
 

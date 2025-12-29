@@ -203,7 +203,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../installation.html">Getting Started</a></li>
 <li class="toctree-l1 current has-children current-page"><a class="current reference internal" href="#">Configurating a Simulation</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Configurating a Simulation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="command_line.html">Command Line Arguments</a></li>
-<li class="toctree-l2"><a class="reference internal" href="config_site.html">Creating a Site</a></li>
 <li class="toctree-l2"><a class="reference internal" href="config_crop.html">Creating a Crop</a></li>
 </ul>
 </li>
@@ -222,7 +221,6 @@
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../pcse/pcse.html">Python Crop Simulation Environment</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of Python Crop Simulation Environment</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../pcse/sites_and_crops.html">Sites and Crops</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../pcse/weather.html">Weather</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../pcse/dynamics.html">Simulation Dynamics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../pcse/output_vars.html">PCSE Output</a></li>
@@ -275,7 +273,7 @@
 <section id="agromanagement">
 <h2>Agromanagement<a class="headerlink" href="#agromanagement" title="Permalink to this heading">¶</a></h2>
 <p>The agromanagent files in <code class="docutils literal notranslate"><span class="pre">/env_config/agro</span></code> controls the underlying crop simulation in <code class="docutils literal notranslate"><span class="pre">/pcse/</span></code> by
-loading different parameter sets for crops and sites. All Agromanagement files are written in YAML.
+loading different parameter sets for crops and soils. All Agromanagement files are written in YAML.
 An agromanagement file consists of three parts.</p>
 <section id="file-heading">
 <h3>File Heading<a class="headerlink" href="#file-heading" title="Permalink to this heading">¶</a></h3>
@@ -284,18 +282,13 @@ An agromanagement file consists of three parts.</p>
 </pre></div>
 </div>
 </section>
-<section id="sitecalendar">
-<span id="site-calendar"></span><h3>SiteCalendar<a class="headerlink" href="#sitecalendar" title="Permalink to this heading">¶</a></h3>
-<p>After the Agromanagement Heading, there must be a valid <code class="docutils literal notranslate"><span class="pre">SiteCalendar</span></code>, which looks like:</p>
+<section id="site">
+<span id="soil-calendar"></span><h3>Site<a class="headerlink" href="#site" title="Permalink to this heading">¶</a></h3>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>AgroManagement:
-    SiteCalendar:
+    Site:
         latitude: 52
         longitude: 5
         year: 1984
-        site_name: oregon
-        site_variation: oregon_1
-        site_start_date: 1985-01-01
-        site_end_date: 1985-12-01
 </pre></div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">latitude</span></code> and <code class="docutils literal notranslate"><span class="pre">longitude</span></code> set the latitude and longitude of the site. Along with <code class="docutils literal notranslate"><span class="pre">year</span></code>, <code class="docutils literal notranslate"><span class="pre">latitude</span></code> and <code class="docutils literal notranslate"><span class="pre">longitude</span></code>
@@ -303,22 +296,34 @@ are used to load the historical weather for that <code class="docutils literal n
 <ul class="simple">
 <li><p>NOTE: the <code class="docutils literal notranslate"><span class="pre">latitude</span></code>, <code class="docutils literal notranslate"><span class="pre">longitude</span></code> and <code class="docutils literal notranslate"><span class="pre">year</span></code> can be overridden in the <code class="docutils literal notranslate"><span class="pre">env.reset()</span></code> function or with the <code class="docutils literal notranslate"><span class="pre">--npk-args.random-reset</span></code> flag.</p></li>
 </ul>
-<p><code class="docutils literal notranslate"><span class="pre">site_name</span></code> and <code class="docutils literal notranslate"><span class="pre">site_variation</span></code> read the parameters from the <code class="docutils literal notranslate"><span class="pre">env_config/site/site_name.yaml</span></code> given the <code class="docutils literal notranslate"><span class="pre">site_variation</span></code>.</p>
-<p>Check that the <code class="docutils literal notranslate"><span class="pre">site_variation</span></code> appears under the <code class="docutils literal notranslate"><span class="pre">Variations</span></code> header in the <code class="docutils literal notranslate"><span class="pre">site_name.yaml</span></code> file. See <a class="reference internal" href="config_site.html#site-config"><span class="std std-ref">Creating a Site</span></a></p>
-<p><code class="docutils literal notranslate"><span class="pre">site_start_date</span></code> and <code class="docutils literal notranslate"><span class="pre">site_end_date</span></code> set the global starting and ending dates of the simulation. The specifc year is almost always unimportant, as it will simply correlate to the length of the simulation in years.</p>
+</section>
+<section id="soilcalendar">
+<h3>SoilCalendar<a class="headerlink" href="#soilcalendar" title="Permalink to this heading">¶</a></h3>
+<p>After the Agromanagement Heading, there must be a valid <code class="docutils literal notranslate"><span class="pre">SoilCalendar</span></code>, which looks like:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>AgroManagement:
+    SoilCalendar:
+        soil_name: oregon
+        soil_variation: oregon_1
+        soil_start_date: 1985-01-01
+        soil_end_date: 1985-12-01
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">soil_name</span></code> and <code class="docutils literal notranslate"><span class="pre">soil_variation</span></code> read the parameters from the <code class="docutils literal notranslate"><span class="pre">env_config/soil/soil_name.yaml</span></code> given the <code class="docutils literal notranslate"><span class="pre">soil_variation</span></code>.</p>
+<p>Check that the <code class="docutils literal notranslate"><span class="pre">soil_variation</span></code> appears under the <code class="docutils literal notranslate"><span class="pre">Variations</span></code> header in the <code class="docutils literal notranslate"><span class="pre">soil_name.yaml</span></code> file. See <a class="reference internal" href="config_site.html#soil-config"><span class="std std-ref">Creating a Soil</span></a></p>
+<p><code class="docutils literal notranslate"><span class="pre">soil_start_date</span></code> and <code class="docutils literal notranslate"><span class="pre">soil_end_date</span></code> set the global starting and ending dates of the simulation. The specifc year is almost always unimportant, as it will simply correlate to the length of the simulation in years.</p>
 <ul class="simple">
-<li><p>Example: setting <code class="docutils literal notranslate"><span class="pre">site_start_date:</span> <span class="pre">1985-01-01</span></code> and <code class="docutils literal notranslate"><span class="pre">site_end_date:</span> <span class="pre">1985-12-01</span></code> will result in the same output as setting  <code class="docutils literal notranslate"><span class="pre">site_start_date:</span> <span class="pre">2011-01-01</span></code> and <code class="docutils literal notranslate"><span class="pre">site_end_date:</span> <span class="pre">2011-12-01</span></code></p></li>
-<li><p>This is because on calling <code class="docutils literal notranslate"><span class="pre">env.reset()</span></code> the <code class="docutils literal notranslate"><span class="pre">year</span></code> is passed with the start month and day, and the difference between the <code class="docutils literal notranslate"><span class="pre">site_start_date</span></code> and <code class="docutils literal notranslate"><span class="pre">site_end_date</span></code>. While this feels a bit clunky, it makes validation very easy.</p></li>
+<li><p>Example: setting <code class="docutils literal notranslate"><span class="pre">soil_start_date:</span> <span class="pre">1985-01-01</span></code> and <code class="docutils literal notranslate"><span class="pre">soil_end_date:</span> <span class="pre">1985-12-01</span></code> will result in the same output as setting  <code class="docutils literal notranslate"><span class="pre">soil_start_date:</span> <span class="pre">2011-01-01</span></code> and <code class="docutils literal notranslate"><span class="pre">soil_end_date:</span> <span class="pre">2011-12-01</span></code></p></li>
+<li><p>This is because on calling <code class="docutils literal notranslate"><span class="pre">env.reset()</span></code> the <code class="docutils literal notranslate"><span class="pre">year</span></code> is passed with the start month and day, and the difference between the <code class="docutils literal notranslate"><span class="pre">soil_start_date</span></code> and <code class="docutils literal notranslate"><span class="pre">soil_end_date</span></code>. While this feels a bit clunky, it makes validation very easy.</p></li>
 </ul>
 <div class="admonition caution">
 <p class="admonition-title">Caution</p>
-<p>When training a RL Agent, the <code class="docutils literal notranslate"><span class="pre">site_start_date</span></code> and <code class="docutils literal notranslate"><span class="pre">site_end_date</span></code> should correspond to the <code class="docutils literal notranslate"><span class="pre">crop_start_date</span></code> and <code class="docutils literal notranslate"><span class="pre">crop_end_date</span></code>, otherwise there will be
+<p>When training a RL Agent, the <code class="docutils literal notranslate"><span class="pre">soil_start_date</span></code> and <code class="docutils literal notranslate"><span class="pre">soil_end_date</span></code> should correspond to the <code class="docutils literal notranslate"><span class="pre">crop_start_date</span></code> and <code class="docutils literal notranslate"><span class="pre">crop_end_date</span></code>, otherwise there will be
 crop observation variables missing which the RL Agent cannot handle.</p>
 </div>
 </section>
 <section id="cropcalendar">
 <h3>CropCalendar<a class="headerlink" href="#cropcalendar" title="Permalink to this heading">¶</a></h3>
-<p>In addition to the <code class="docutils literal notranslate"><span class="pre">SiteCalendar</span></code>, there must be a valid <code class="docutils literal notranslate"><span class="pre">CropCalendar</span></code>, which looks like:</p>
+<p>In addition to the <code class="docutils literal notranslate"><span class="pre">SoilCalendar</span></code>, there must be a valid <code class="docutils literal notranslate"><span class="pre">CropCalendar</span></code>, which looks like:</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>CropCalendar:
     crop_name: wheat
     crop_variety: wheat_1
@@ -331,8 +336,8 @@ crop observation variables missing which the RL Agent cannot handle.</p>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">crop_name</span></code> and <code class="docutils literal notranslate"><span class="pre">crop_variety</span></code> read the parameters from the <code class="docutils literal notranslate"><span class="pre">env_config/crop/crop_name.yaml</span></code> given the <code class="docutils literal notranslate"><span class="pre">crop_variety</span></code>.</p>
 <p>Check that the <code class="docutils literal notranslate"><span class="pre">crop_variety</span></code> appears under the <code class="docutils literal notranslate"><span class="pre">Varieties</span></code> header in the <code class="docutils literal notranslate"><span class="pre">crop_name.yaml</span></code> file. See <a class="reference internal" href="config_crop.html#crop-config"><span class="std std-ref">Creating a Crop</span></a></p>
-<p><code class="docutils literal notranslate"><span class="pre">crop_start_date</span></code> and <code class="docutils literal notranslate"><span class="pre">crop_end_date</span></code> set the dates that the crop starts and the maximum length of the crop. The <code class="docutils literal notranslate"><span class="pre">crop_start_date</span></code> must come after the <code class="docutils literal notranslate"><span class="pre">site_start_date</span></code> as a
-crop cannot be present without an active site, and the <code class="docutils literal notranslate"><span class="pre">crop_end_date</span></code> must happen before the <code class="docutils literal notranslate"><span class="pre">site_end_date</span></code> as there cannot be an active crop without an active site.</p>
+<p><code class="docutils literal notranslate"><span class="pre">crop_start_date</span></code> and <code class="docutils literal notranslate"><span class="pre">crop_end_date</span></code> set the dates that the crop starts and the maximum length of the crop. The <code class="docutils literal notranslate"><span class="pre">crop_start_date</span></code> must come after the <code class="docutils literal notranslate"><span class="pre">soil_start_date</span></code> as a
+crop cannot be present without an active soil, and the <code class="docutils literal notranslate"><span class="pre">crop_end_date</span></code> must happen before the <code class="docutils literal notranslate"><span class="pre">soil_end_date</span></code> as there cannot be an active crop without an active soil.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">crop_start_type</span></code> dictates the crop stage that the crop starts in.
 * For annual crops, valid start types are: <code class="docutils literal notranslate"><span class="pre">sowing</span></code> and <code class="docutils literal notranslate"><span class="pre">emergence</span></code>.
 * For perennial crops, valid start types are: <code class="docutils literal notranslate"><span class="pre">sowing</span></code>, <code class="docutils literal notranslate"><span class="pre">emergence</span></code> and <code class="docutils literal notranslate"><span class="pre">dormant</span></code>.
@@ -340,23 +345,24 @@ crop cannot be present without an active site, and the <code class="docutils lit
 <p>The <code class="docutils literal notranslate"><span class="pre">crop_end_type</span></code> controls the stage or trigger that the end the crop portion of the simulation
 * For annual and perrennial crops, valid end types are: <code class="docutils literal notranslate"><span class="pre">sowing</span></code>, <code class="docutils literal notranslate"><span class="pre">emergence</span></code>, <code class="docutils literal notranslate"><span class="pre">maturity</span></code>, <code class="docutils literal notranslate"><span class="pre">harvest</span></code>, <code class="docutils literal notranslate"><span class="pre">death</span></code>, and <code class="docutils literal notranslate"><span class="pre">max_duration</span></code>.
 * For grape specific simulations, valid end types are: <code class="docutils literal notranslate"><span class="pre">endodorm</span></code>, <code class="docutils literal notranslate"><span class="pre">ecodorm</span></code>, <code class="docutils literal notranslate"><span class="pre">budbreak</span></code>, <code class="docutils literal notranslate"><span class="pre">verasion</span></code>, <code class="docutils literal notranslate"><span class="pre">ripe</span></code>, <code class="docutils literal notranslate"><span class="pre">max_duration</span></code>.</p>
-<p><code class="docutils literal notranslate"><span class="pre">max_duration</span></code> controls the maximum duration in days that a crop can be active. Regardless of the <code class="docutils literal notranslate"><span class="pre">crop_end_type</span></code>, if the maximum duration is reached, the crop will become inactive, although the site simulation may continue.</p>
+<p><code class="docutils literal notranslate"><span class="pre">max_duration</span></code> controls the maximum duration in days that a crop can be active. Regardless of the <code class="docutils literal notranslate"><span class="pre">crop_end_type</span></code>, if the maximum duration is reached, the crop will become inactive, although the soil simulation may continue.</p>
 <ul class="simple">
-<li><p>For more information on how crops and sites interact, see <a class="reference internal" href="../pcse/sites_and_crops.html#sites-and-crops"><span class="std std-ref">Sites and Crops</span></a></p></li>
+<li><p>For more information on how crops and soils interact, see <a class="reference internal" href="../pcse/sites_and_crops.html#soils-and-crops"><span class="std std-ref">Soils and Crops</span></a></p></li>
 </ul>
 </section>
 <section id="full-example">
 <h3>Full Example<a class="headerlink" href="#full-example" title="Permalink to this heading">¶</a></h3>
 <p>After the three parts outlined above, a complete example would look like:</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>AgroManagement:
-    SiteCalendar:
+    Site:
         latitude: 52
         longitude: 5
         year: 1984
-        site_name: oregon
-        site_variation: oregon_1
-        site_start_date: 1985-01-01
-        site_end_date: 1985-12-01
+    SoilCalendar:
+        soil_name: oregon
+        soil_variation: oregon_1
+        soil_start_date: 1985-01-01
+        soil_end_date: 1985-12-01
     CropCalendar:
         crop_name: wheat
         crop_variety: wheat_1
@@ -371,14 +377,15 @@ crop cannot be present without an active site, and the <code class="docutils lit
 <section id="agromanagement-template">
 <span id="agro-template"></span><h3>Agromanagement Template<a class="headerlink" href="#agromanagement-template" title="Permalink to this heading">¶</a></h3>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>AgroManagement:
-    SiteCalendar:
+    Site:
         latitude:
         longitude:
         year:
-        site_name:
-        site_variation:
-        site_start_date:
-        site_end_date:
+    SoilCalendar:
+        soil_name:
+        soil_variation:
+        soil_start_date:
+        soil_end_date:
     CropCalendar:
         crop_name:
         crop_variety:
@@ -393,13 +400,8 @@ crop cannot be present without an active site, and the <code class="docutils lit
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="command_line.html">Command Line Arguments</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="command_line.html#gym-environment-configuration">Gym Environment Configuration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="command_line.html#crop-site-and-agromangement-config">Crop, Site, and Agromangement Config</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command_line.html#crop-soil-and-agromangement-config">Crop, Soil, and Agromangement Config</a></li>
 <li class="toctree-l2"><a class="reference internal" href="command_line.html#configuration-flow-chart">Configuration Flow Chart</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="config_site.html">Creating a Site</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="config_site.html#site-creation">Site Creation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="config_site.html#site-parameters">Site Parameters</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="config_crop.html">Creating a Crop</a><ul>
@@ -470,7 +472,8 @@ crop cannot be present without an active site, and the <code class="docutils lit
 <li><a class="reference internal" href="#">Configurating a Simulation</a><ul>
 <li><a class="reference internal" href="#agromanagement">Agromanagement</a><ul>
 <li><a class="reference internal" href="#file-heading">File Heading</a></li>
-<li><a class="reference internal" href="#sitecalendar">SiteCalendar</a></li>
+<li><a class="reference internal" href="#site">Site</a></li>
+<li><a class="reference internal" href="#soilcalendar">SoilCalendar</a></li>
 <li><a class="reference internal" href="#cropcalendar">CropCalendar</a></li>
 <li><a class="reference internal" href="#full-example">Full Example</a></li>
 <li><a class="reference internal" href="#agromanagement-template">Agromanagement Template</a></li>

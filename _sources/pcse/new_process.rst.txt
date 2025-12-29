@@ -69,7 +69,7 @@ These additions will enable the parameter to be set via command line.
 
 .. caution::
 
-    If a new parameter has been added, it must also be added to the crop and site yaml files. Otherwise, a missing 
+    If a new parameter has been added, it must also be added to the crop and soil yaml files. Otherwise, a missing 
     parameter error will be thrown by the PCSE module.  
 
 Now that the WOFOSTGym API is aware of the new state and rate variables, they can be included as part of the observation

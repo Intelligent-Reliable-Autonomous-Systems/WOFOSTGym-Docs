@@ -3,7 +3,7 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Creating a Site" href="config_site.html" /><link rel="prev" title="Configurating a Simulation" href="config_agro.html" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Creating a Crop" href="config_crop.html" /><link rel="prev" title="Configurating a Simulation" href="config_agro.html" />
 
     <!-- Generated with Sphinx 7.1.2 and Furo 2024.08.06 -->
         <title>Command Line Arguments - WOFOST-Gym 1.0.0 documentation</title>
@@ -203,7 +203,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../installation.html">Getting Started</a></li>
 <li class="toctree-l1 current has-children"><a class="reference internal" href="config_agro.html">Configurating a Simulation</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Configurating a Simulation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
 <li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Command Line Arguments</a></li>
-<li class="toctree-l2"><a class="reference internal" href="config_site.html">Creating a Site</a></li>
 <li class="toctree-l2"><a class="reference internal" href="config_crop.html">Creating a Crop</a></li>
 </ul>
 </li>
@@ -222,7 +221,6 @@
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../pcse/pcse.html">Python Crop Simulation Environment</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of Python Crop Simulation Environment</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../pcse/sites_and_crops.html">Sites and Crops</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../pcse/weather.html">Weather</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../pcse/dynamics.html">Simulation Dynamics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../pcse/output_vars.html">PCSE Output</a></li>
@@ -273,7 +271,7 @@
           <section id="command-line-arguments">
 <span id="command-line"></span><h1>Command Line Arguments<a class="headerlink" href="#command-line-arguments" title="Permalink to this heading">¶</a></h1>
 <p>Every time an environment is created, an associated configuration file is created as well.
-As all parameters can be specified by command line argument, (see <a class="reference internal" href="#crop-site-agro-command-line"><span class="std std-ref">Crop, Site, and Agromangement Config</span></a>), it is easy to lose track of how data was generated,
+As all parameters can be specified by command line argument, (see <a class="reference internal" href="#crop-soil-agro-command-line"><span class="std std-ref">Crop, Soil, and Agromangement Config</span></a>), it is easy to lose track of how data was generated,
 or what environment an Agent was trained on. See <a class="reference internal" href="../pcse_gym/env_creation.html#env-creation"><span class="std std-ref">Environment Creation</span></a> for more information.</p>
 <p>It is desirable to rerun a simulation with the same (or similar) parameteres. Thus, we support loading an environment configuration. To do so, use the following
 command line argument:</p>
@@ -311,18 +309,18 @@ loaded is compatible with the Gymnasium Environment specified.</p>
 </div>
 <p>The reward function can also be specified by command line. See <a class="reference internal" href="../pcse_gym/env_creation.html#wrappers"><span class="std std-ref">Environment Wrappers</span></a>.</p>
 </section>
-<section id="crop-site-and-agromangement-config">
-<span id="crop-site-agro-command-line"></span><h2>Crop, Site, and Agromangement Config<a class="headerlink" href="#crop-site-and-agromangement-config" title="Permalink to this heading">¶</a></h2>
-<p>While all necessary simulation configuration can be done through the <code class="docutils literal notranslate"><span class="pre">agromanagement</span></code>, <code class="docutils literal notranslate"><span class="pre">site</span></code> and <code class="docutils literal notranslate"><span class="pre">crop</span></code> YAML files,
+<section id="crop-soil-and-agromangement-config">
+<span id="crop-soil-agro-command-line"></span><h2>Crop, Soil, and Agromangement Config<a class="headerlink" href="#crop-soil-and-agromangement-config" title="Permalink to this heading">¶</a></h2>
+<p>While all necessary simulation configuration can be done through the <code class="docutils literal notranslate"><span class="pre">agromanagement</span></code>, <code class="docutils literal notranslate"><span class="pre">soil</span></code> and <code class="docutils literal notranslate"><span class="pre">crop</span></code> YAML files,
 there are instances where it can be useful to run a quick simulation with only one or two parameters changed. In this case, it is
 very handy to have command line configuration.</p>
-<p>Every argument in the <a class="reference internal" href="config_agro.html#agro-template"><span class="std std-ref">Agromanagement Template</span></a>, <a class="reference internal" href="config_site.html#site-template"><span class="std std-ref">Site Template</span></a>, and <a class="reference internal" href="config_crop.html#crop-template"><span class="std std-ref">Crop Template</span></a>
+<p>Every argument in the <a class="reference internal" href="config_agro.html#agro-template"><span class="std std-ref">Agromanagement Template</span></a>, <a class="reference internal" href="config_site.html#soil-template"><span class="std std-ref">Soil Template</span></a>, and <a class="reference internal" href="config_crop.html#crop-template"><span class="std std-ref">Crop Template</span></a>
 YAML can be passed via a command line argument and will be overridden when running the simulation.</p>
 <p>As an example, suppose that we want to change the <code class="docutils literal notranslate"><span class="pre">max_duration</span></code> to 400 parameter in the <code class="docutils literal notranslate"><span class="pre">agromanagment</span></code> arguments. We would run:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">python3 test_wofost.py --save-folder test --npk.ag.max-duration 400</span>
 </pre></div>
 </div>
-<p>Likewise, we can change <code class="docutils literal notranslate"><span class="pre">site</span></code> and <code class="docutils literal notranslate"><span class="pre">crop</span></code> parameters. Suppose we want to change the <code class="docutils literal notranslate"><span class="pre">site</span></code> parameter <code class="docutils literal notranslate"><span class="pre">CRAIRC</span></code> to 0.20 which controls the critical soil air content for aeraition, and the
+<p>Likewise, we can change <code class="docutils literal notranslate"><span class="pre">soil</span></code> and <code class="docutils literal notranslate"><span class="pre">crop</span></code> parameters. Suppose we want to change the <code class="docutils literal notranslate"><span class="pre">soil</span></code> parameter <code class="docutils literal notranslate"><span class="pre">CRAIRC</span></code> to 0.20 which controls the critical soil air content for aeraition, and the
 <code class="docutils literal notranslate"><span class="pre">crop</span></code> parameter <code class="docutils literal notranslate"><span class="pre">TBASEM</span></code> to 5 which controls the lower threshold for emergence. We would run:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">python3 test_wofost.py --save-folder test/ --npk.wf.CRAIRC 0.20 --npk.TBASEM 5</span>
 </pre></div>
@@ -333,7 +331,7 @@ YAML can be passed via a command line argument and will be overridden when runni
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">--npk.ag.&lt;PARAMETER&gt;</span>
 </pre></div>
 </div>
-<p>meanwhile, all <code class="docutils literal notranslate"><span class="pre">site</span></code> and <code class="docutils literal notranslate"><span class="pre">crop</span></code> arguments are modified by:</p>
+<p>meanwhile, all <code class="docutils literal notranslate"><span class="pre">soil</span></code> and <code class="docutils literal notranslate"><span class="pre">crop</span></code> arguments are modified by:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">--npk.wf.&lt;PARAMETER&gt;</span>
 </pre></div>
 </div>
@@ -350,12 +348,12 @@ YAML can be passed via a command line argument and will be overridden when runni
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="config_site.html">
+          <a class="next-page" href="config_crop.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">Creating a Site</div>
+                <div class="title">Creating a Crop</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
@@ -402,7 +400,7 @@ YAML can be passed via a command line argument and will be overridden when runni
             <ul>
 <li><a class="reference internal" href="#">Command Line Arguments</a><ul>
 <li><a class="reference internal" href="#gym-environment-configuration">Gym Environment Configuration</a></li>
-<li><a class="reference internal" href="#crop-site-and-agromangement-config">Crop, Site, and Agromangement Config</a></li>
+<li><a class="reference internal" href="#crop-soil-and-agromangement-config">Crop, Soil, and Agromangement Config</a></li>
 <li><a class="reference internal" href="#configuration-flow-chart">Configuration Flow Chart</a></li>
 </ul>
 </li>

@@ -19,7 +19,7 @@ Every subclass of environments has six environments which correspond to the foll
 * LNW: Crop growth subject to limited Nitrogen and water
 * PP: Crop growth under Potential Production, not limited by any nutrients (this can be helpful as a baseline). 
 
-These 6 environments dictate the conditions under which a crop or site can envolve under. For more information, see :ref:`dynamics`.
+These 6 environments dictate the conditions under which a crop or soil can envolve under. For more information, see :ref:`dynamics`.
 
 Default Environments
 --------------------

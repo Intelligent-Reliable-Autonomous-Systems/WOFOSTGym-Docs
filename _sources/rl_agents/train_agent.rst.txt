@@ -12,7 +12,7 @@ RL Algorithm implementations follow the `CleanRL <https://github.com/vwxyzjn/cle
 
 .. important::
 
-    When training a RL Agent, the ``site_start_date`` and ``site_end_date`` should correspond to the ``crop_start_date`` and ``crop_end_date``, otherwise there will be 
+    When training a RL Agent, the ``soil_start_date`` and ``soil_end_date`` should correspond to the ``crop_start_date`` and ``crop_end_date``, otherwise there will be 
     crop observation variables missing which the RL Agent cannot handle.
 
 Starting a Training Run

@@ -203,7 +203,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../installation.html">Getting Started</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../config/config_agro.html">Configurating a Simulation</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Configurating a Simulation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../config/command_line.html">Command Line Arguments</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../config/config_site.html">Creating a Site</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../config/config_crop.html">Creating a Crop</a></li>
 </ul>
 </li>
@@ -222,7 +221,6 @@
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../pcse/pcse.html">Python Crop Simulation Environment</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of Python Crop Simulation Environment</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../pcse/sites_and_crops.html">Sites and Crops</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../pcse/weather.html">Weather</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../pcse/dynamics.html">Simulation Dynamics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../pcse/output_vars.html">PCSE Output</a></li>
@@ -353,8 +351,8 @@ the <code class="docutils literal notranslate"><span class="pre">pcse_gym.wrappe
 
     <span class="c1"># Terminate based on crop finishing</span>
     <span class="n">termination</span> <span class="o">=</span> <span class="n">output</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;FIN&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mf">1.0</span>
-    <span class="c1"># Truncate based on site end date</span>
-    <span class="n">truncation</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">unwrapped</span><span class="o">.</span><span class="n">date</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">unwrapped</span><span class="o">.</span><span class="n">site_end_date</span>
+    <span class="c1"># Truncate based on soil end date</span>
+    <span class="n">truncation</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">unwrapped</span><span class="o">.</span><span class="n">date</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">unwrapped</span><span class="o">.</span><span class="n">soil_end_date</span>
 
     <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">unwrapped</span><span class="o">.</span><span class="n">_log</span><span class="p">(</span><span class="n">output</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;WSO&#39;</span><span class="p">],</span> <span class="n">act_tuple</span><span class="p">,</span> <span class="n">reward</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">observation</span><span class="p">,</span> <span class="n">reward</span><span class="p">,</span> <span class="n">termination</span><span class="p">,</span> <span class="n">truncation</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">unwrapped</span><span class="o">.</span><span class="n">log</span>

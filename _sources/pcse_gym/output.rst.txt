@@ -12,7 +12,7 @@ The environment output is controlled by the ``--npk.output-vars`` and ``--npk.we
 in the ``pcse_gym.args.NPK_Args`` dataclass. This dataclass is present in the ``utils.Args`` class which is passed
 to all scripts that generate data or train agents. 
 
-The ``output`` variables correspond to the site and crop variables output by the simulation at each time step. Meanwhile, the 
+The ``output`` variables correspond to the soil and crop variables output by the simulation at each time step. Meanwhile, the 
 ``weather`` variables correspond to the daily weather from the specified location and year for the given day. A full list of 
 output and weather variables can be found at :ref:`pcse_output`. 
 

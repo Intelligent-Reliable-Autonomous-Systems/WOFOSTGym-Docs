@@ -3,7 +3,7 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Simulation Dynamics" href="dynamics.html" /><link rel="prev" title="Sites and Crops" href="sites_and_crops.html" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Simulation Dynamics" href="dynamics.html" /><link rel="prev" title="Python Crop Simulation Environment" href="pcse.html" />
 
     <!-- Generated with Sphinx 7.1.2 and Furo 2024.08.06 -->
         <title>Weather - WOFOST-Gym 1.0.0 documentation</title>
@@ -203,7 +203,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../installation.html">Getting Started</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../config/config_agro.html">Configurating a Simulation</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Configurating a Simulation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../config/command_line.html">Command Line Arguments</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../config/config_site.html">Creating a Site</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../config/config_crop.html">Creating a Crop</a></li>
 </ul>
 </li>
@@ -222,7 +221,6 @@
 </ul>
 </li>
 <li class="toctree-l1 current has-children"><a class="reference internal" href="pcse.html">Python Crop Simulation Environment</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of Python Crop Simulation Environment</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="sites_and_crops.html">Sites and Crops</a></li>
 <li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Weather</a></li>
 <li class="toctree-l2"><a class="reference internal" href="dynamics.html">Simulation Dynamics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="output_vars.html">PCSE Output</a></li>
@@ -274,7 +272,7 @@
 <span id="id1"></span><h1>Weather<a class="headerlink" href="#weather" title="Permalink to this heading">¶</a></h1>
 <p>The weather in PCSE is generally historical data provided by the <a class="reference external" href="https://github.com/kdmayer/nasa-power-api">NASA Power</a> API.
 This weather module has data from 1984 to 2023 with most latitudes and longitudes available. For configuring
-the weather to be used in a crop simulation, see <a class="reference internal" href="../config/config_agro.html#site-calendar"><span class="std std-ref">SiteCalendar</span></a>.</p>
+the weather to be used in a crop simulation, see <a class="reference internal" href="../config/config_agro.html#soil-calendar"><span class="std std-ref">Site</span></a>.</p>
 <p>As the simulation processes, the <code class="docutils literal notranslate"><span class="pre">pcse.NASAPowerWeatherProvider</span></code> module will continue to draw
 daily weather until the simulation terminates.</p>
 <div class="admonition caution">
@@ -301,14 +299,14 @@ of daily weather to draw from. If this is not desired behavior, it can be overri
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="sites_and_crops.html">
+          <a class="prev-page" href="pcse.html">
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">Sites and Crops</div>
+                <div class="title">Python Crop Simulation Environment</div>
                 
               </div>
             </a>

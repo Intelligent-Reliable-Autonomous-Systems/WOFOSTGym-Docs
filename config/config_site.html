@@ -3,10 +3,10 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Creating a Crop" href="config_crop.html" /><link rel="prev" title="Command Line Arguments" href="command_line.html" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" />
 
     <!-- Generated with Sphinx 7.1.2 and Furo 2024.08.06 -->
-        <title>Creating a Site - WOFOST-Gym 1.0.0 documentation</title>
+        <title>Creating a Soil - WOFOST-Gym 1.0.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=302659d7" />
@@ -199,11 +199,10 @@
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
-<ul class="current">
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../installation.html">Getting Started</a></li>
-<li class="toctree-l1 current has-children"><a class="reference internal" href="config_agro.html">Configurating a Simulation</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Configurating a Simulation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l1 has-children"><a class="reference internal" href="config_agro.html">Configurating a Simulation</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Configurating a Simulation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="command_line.html">Command Line Arguments</a></li>
-<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Creating a Site</a></li>
 <li class="toctree-l2"><a class="reference internal" href="config_crop.html">Creating a Crop</a></li>
 </ul>
 </li>
@@ -222,7 +221,6 @@
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../pcse/pcse.html">Python Crop Simulation Environment</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of Python Crop Simulation Environment</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../pcse/sites_and_crops.html">Sites and Crops</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../pcse/weather.html">Weather</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../pcse/dynamics.html">Simulation Dynamics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../pcse/output_vars.html">PCSE Output</a></li>
@@ -270,15 +268,15 @@
           </label>
         </div>
         <article role="main" id="furo-main-content">
-          <section id="creating-a-site">
-<span id="site-config"></span><h1>Creating a Site<a class="headerlink" href="#creating-a-site" title="Permalink to this heading">¶</a></h1>
-<section id="site-creation">
-<h2>Site Creation<a class="headerlink" href="#site-creation" title="Permalink to this heading">¶</a></h2>
-<p>Every site has a predefined set of parameters that need to be included that define the soil dynamics. See the table
-below for information on these parameters. For the blank template to make a site, see <a class="reference internal" href="#site-template"><span class="std std-ref">Site Template</span></a>.</p>
+          <section id="creating-a-soil">
+<span id="soil-config"></span><h1>Creating a Soil<a class="headerlink" href="#creating-a-soil" title="Permalink to this heading">¶</a></h1>
+<section id="soil-creation">
+<h2>Soil Creation<a class="headerlink" href="#soil-creation" title="Permalink to this heading">¶</a></h2>
+<p>Every soil has a predefined set of parameters that need to be included that define the soil dynamics. See the table
+below for information on these parameters. For the blank template to make a soil, see <a class="reference internal" href="#soil-template"><span class="std std-ref">Soil Template</span></a>.</p>
 </section>
-<section id="site-parameters">
-<h2>Site Parameters<a class="headerlink" href="#site-parameters" title="Permalink to this heading">¶</a></h2>
+<section id="soil-parameters">
+<h2>Soil Parameters<a class="headerlink" href="#soil-parameters" title="Permalink to this heading">¶</a></h2>
 <section id="npk-soil-parameters">
 <h3>NPK Soil Parameters<a class="headerlink" href="#npk-soil-parameters" title="Permalink to this heading">¶</a></h3>
 <div class="table-wrapper docutils container">
@@ -521,9 +519,9 @@ depth zone</p></td>
 </table>
 </div>
 </section>
-<section id="site-template">
-<span id="id1"></span><h3>Site Template<a class="headerlink" href="#site-template" title="Permalink to this heading">¶</a></h3>
-<p>Download the site template YAML file here: <a class="reference download internal" download="" href="../_downloads/8183394686061ad269fd9ff3552f885b/site_template.yaml"><code class="xref download docutils literal notranslate"><span class="pre">site_template.yaml</span></code></a></p>
+<section id="soil-template">
+<span id="id1"></span><h3>Soil Template<a class="headerlink" href="#soil-template" title="Permalink to this heading">¶</a></h3>
+<p>Download the soil template YAML file here: <code class="xref download docutils literal notranslate"><span class="pre">soil_template.yaml</span></code></p>
 </section>
 </section>
 </section>
@@ -533,26 +531,8 @@ depth zone</p></td>
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="config_crop.html">
-              <div class="page-info">
-                <div class="context">
-                  <span>Next</span>
-                </div>
-                <div class="title">Creating a Crop</div>
-              </div>
-              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
-            </a>
-          <a class="prev-page" href="command_line.html">
-              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
-              <div class="page-info">
-                <div class="context">
-                  <span>Previous</span>
-                </div>
-                
-                <div class="title">Command Line Arguments</div>
-                
-              </div>
-            </a>
+          
+          
         </div>
         <div class="bottom-of-page">
           <div class="left-details">
@@ -583,12 +563,12 @@ depth zone</p></td>
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
-<li><a class="reference internal" href="#">Creating a Site</a><ul>
-<li><a class="reference internal" href="#site-creation">Site Creation</a></li>
-<li><a class="reference internal" href="#site-parameters">Site Parameters</a><ul>
+<li><a class="reference internal" href="#">Creating a Soil</a><ul>
+<li><a class="reference internal" href="#soil-creation">Soil Creation</a></li>
+<li><a class="reference internal" href="#soil-parameters">Soil Parameters</a><ul>
 <li><a class="reference internal" href="#npk-soil-parameters">NPK Soil Parameters</a></li>
 <li><a class="reference internal" href="#soil-dynamics-parameters">Soil Dynamics Parameters</a></li>
-<li><a class="reference internal" href="#site-template">Site Template</a></li>
+<li><a class="reference internal" href="#soil-template">Soil Template</a></li>
 </ul>
 </li>
 </ul>

@@ -99,8 +99,8 @@ the ``pcse_gym.wrappers.NewRewardWrapper`` class. Below is the template, which d
         
         # Terminate based on crop finishing
         termination = output.iloc[-1]['FIN'] == 1.0
-        # Truncate based on site end date
-        truncation = self.env.unwrapped.date >= self.env.unwrapped.site_end_date
+        # Truncate based on soil end date
+        truncation = self.env.unwrapped.date >= self.env.unwrapped.soil_end_date
 
         self.env.unwrapped._log(output.iloc[-1]['WSO'], act_tuple, reward)
         return observation, reward, termination, truncation, self.env.unwrapped.log

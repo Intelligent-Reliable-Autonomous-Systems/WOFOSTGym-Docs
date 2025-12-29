@@ -3,10 +3,10 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Weather" href="weather.html" /><link rel="prev" title="Python Crop Simulation Environment" href="pcse.html" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" />
 
     <!-- Generated with Sphinx 7.1.2 and Furo 2024.08.06 -->
-        <title>Sites and Crops - WOFOST-Gym 1.0.0 documentation</title>
+        <title>Soils and Crops - WOFOST-Gym 1.0.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=302659d7" />
@@ -199,11 +199,10 @@
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
-<ul class="current">
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../installation.html">Getting Started</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../config/config_agro.html">Configurating a Simulation</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Configurating a Simulation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../config/command_line.html">Command Line Arguments</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../config/config_site.html">Creating a Site</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../config/config_crop.html">Creating a Crop</a></li>
 </ul>
 </li>
@@ -221,8 +220,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../pcse_gym/rewards.html">Reward Wrappers</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current has-children"><a class="reference internal" href="pcse.html">Python Crop Simulation Environment</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of Python Crop Simulation Environment</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
-<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Sites and Crops</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pcse.html">Python Crop Simulation Environment</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of Python Crop Simulation Environment</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="weather.html">Weather</a></li>
 <li class="toctree-l2"><a class="reference internal" href="dynamics.html">Simulation Dynamics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="output_vars.html">PCSE Output</a></li>
@@ -270,17 +268,17 @@
           </label>
         </div>
         <article role="main" id="furo-main-content">
-          <section id="sites-and-crops">
-<span id="id1"></span><h1>Sites and Crops<a class="headerlink" href="#sites-and-crops" title="Permalink to this heading">¶</a></h1>
-<p>Every PCSE simulation contains a <code class="docutils literal notranslate"><span class="pre">site</span></code> and a <code class="docutils literal notranslate"><span class="pre">crop</span></code>. The site is always active, while the
-crop can sometimes be inactivate. Importantly, a crop cannot exist without an active site.</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">site</span></code> stores all the information about the soil including nutrient and water levels.
+          <section id="soils-and-crops">
+<span id="id1"></span><h1>Soils and Crops<a class="headerlink" href="#soils-and-crops" title="Permalink to this heading">¶</a></h1>
+<p>Every PCSE simulation contains a <code class="docutils literal notranslate"><span class="pre">soil</span></code> and a <code class="docutils literal notranslate"><span class="pre">crop</span></code>. The soil is always active, while the
+crop can sometimes be inactivate. Importantly, a crop cannot exist without an active soil.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">soil</span></code> stores all the information about the soil including nutrient and water levels.
 These levels flucuate over time subject to user input (fertilization and irrigation), weather (rainfall, runoff),
 and background processes.</p>
 <p>Meanwhile, the <code class="docutils literal notranslate"><span class="pre">crop</span></code> stores all information about the current state of the crop. The crop evolves
 subject to the weather (Temperature and Day Length) and the available minerals in the soil.</p>
 <p>For a full list of output variables, see <a class="reference internal" href="output_vars.html#pcse-output"><span class="std std-ref">PCSE Output</span></a>. For a full list of parameters, see
-<a class="reference internal" href="../config/config_crop.html#crop-config"><span class="std std-ref">Creating a Crop</span></a> and <a class="reference internal" href="../config/config_site.html#site-config"><span class="std std-ref">Creating a Site</span></a>.</p>
+<a class="reference internal" href="../config/config_crop.html#crop-config"><span class="std std-ref">Creating a Crop</span></a> and <a class="reference internal" href="../config/config_site.html#soil-config"><span class="std std-ref">Creating a Soil</span></a>.</p>
 </section>
 
         </article>
@@ -288,26 +286,8 @@ subject to the weather (Temperature and Day Length) and the available minerals i
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="weather.html">
-              <div class="page-info">
-                <div class="context">
-                  <span>Next</span>
-                </div>
-                <div class="title">Weather</div>
-              </div>
-              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
-            </a>
-          <a class="prev-page" href="pcse.html">
-              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
-              <div class="page-info">
-                <div class="context">
-                  <span>Previous</span>
-                </div>
-                
-                <div class="title">Python Crop Simulation Environment</div>
-                
-              </div>
-            </a>
+          
+          
         </div>
         <div class="bottom-of-page">
           <div class="left-details">

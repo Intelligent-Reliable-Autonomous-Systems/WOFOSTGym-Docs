@@ -100,7 +100,7 @@ how her policy performs when fertilizing wheat at another farm. This is the prob
 
 To generate data from multiple policies and farms, navigate to the ``gen_data_multiple.py`` file. For ease of use, each farm is specified by a ``.yaml``
 configuration file which is created when an environment is called. See :ref:`env_creation` for more information. Modify multiple ``.yaml`` configuration files
-to achieve the desired site and crop configuration. Loading configurations is as follows:
+to achieve the desired soil and crop configuration. Loading configurations is as follows:
 
 .. code-block:: python
 
